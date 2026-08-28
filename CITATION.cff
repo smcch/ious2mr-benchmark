@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+title: >-
+  ioUS2MR-benchmark: a systematic benchmark of intraoperative
+  ultrasound-to-MR synthesis for brain tumour surgery
+message: >-
+  If you use this software, the released model weights or the derived
+  results, please cite both the software and the accompanying paper.
+type: software
+authors:
+  - given-names: Olga
+    family-names: Esteban-Sinovas
+    affiliation: >-
+      Department of Neurosurgery, Río Hortega University Hospital,
+      Valladolid, Spain
+  - given-names: Santiago
+    family-names: Cepeda
+    email: scepedac@saludcastillayleon.es
+    affiliation: >-
+      Department of Neurosurgery, Río Hortega University Hospital,
+      Valladolid, Spain
+    # orcid: 'https://orcid.org/[TODO-ORCID]'
+  - given-names: Ignacio
+    family-names: Arrese
+    affiliation: >-
+      Department of Neurosurgery, Río Hortega University Hospital,
+      Valladolid, Spain
+  - given-names: Rosario
+    family-names: Sarabia
+    affiliation: >-
+      Department of Neurosurgery, Río Hortega University Hospital,
+      Valladolid, Spain
+repository-code: 'https://github.com/[TODO-ORG]/ious2mr-benchmark'
+abstract: >-
+  Code, configuration and trained model weights for a controlled
+  benchmark of intraoperative ultrasound (ioUS) to MRI synthesis on the
+  public ReMIND cohort: six generative architectures (Pix2Pix,
+  SwinPix2Pix, CycleGAN, CUT, ResViT, SynDiff) x four inference regimes
+  (2D, 2.5D, 2D+3D-refinement, full-3D) x two targets (T2w, T2w+FLAIR),
+  evaluated with image-fidelity metrics and an nnU-Net downstream
+  segmentation protocol.
+keywords:
+  - intraoperative ultrasound
+  - MRI synthesis
+  - brain tumour surgery
+  - generative models
+  - benchmark
+  - ReMIND
+license: Apache-2.0
+version: 1.0.0
+# date-released: 'TODO'
+preferred-citation:
+  type: article
+  title: >-
+    A Systematic Benchmark of Intraoperative Ultrasound-to-MR Synthesis
+    for Brain Tumour Surgery
+  authors:
+    - given-names: Olga
+      family-names: Esteban-Sinovas
+    - given-names: Santiago
+      family-names: Cepeda
+    - given-names: Ignacio
+      family-names: Arrese
+    - given-names: Rosario
+      family-names: Sarabia
+  journal: '[TODO — journal]'
+  year: 2026
+  # doi: 'TODO'

@@ -1,0 +1,52 @@
+model,backbone,architecture,target,gen_params,disc_params,total_params,gflops_fwd,train_time,infer_s_per_vol,note
+pix2pix,GAN,2D+3D-post,t2,"37,183,106","5,531,012","42,714,118",22.1 (gen) + 3.4 (refiner),~0.3-0.7 h (+2D base),~25 s + 3D-refiner sw,
+CUT,GAN,2D+3D-post,t2,"37,250,882","1,323,396","38,574,278",23.6 (gen) + 3.4 (refiner),~1.0-1.3 h (+2D base),~25 s + 3D-refiner sw,
+SwinPix2Pix,GAN,2D+3D-post,t2,"1,604,409","5,531,012","7,135,421",8.4 (gen) + 3.4 (refiner),~1.1-1.5 h (+2D base),~30 s + 3D-refiner sw,
+pix2pix,GAN,2D+3D-post,t2_flair,"37,184,548","5,533,060","42,717,608",22.2 (gen) + 3.5 (refiner),~0.7 h (+2D base),~25 s + 3D-refiner sw,
+SwinPix2Pix,GAN,2D+3D-post,t2_flair,"1,605,311","5,533,060","7,138,371",8.4 (gen) + 3.5 (refiner),~1.1 h (+2D base),~30 s + 3D-refiner sw,
+CycleGAN,GAN,2D+3D-post,t2_flair,"22,909,189","2,648,840","25,558,029",63.4 x2 (gen) + 3.5 (refiner),~0.7 h (+2D base),~16 s + 3D-refiner sw,
+CycleGAN,GAN,2D+3D-post,t2,"22,902,051","2,646,792","25,548,843",63.1 x2 (gen) + 3.4 (refiner),~0.7-0.9 h (+2D base),~16 s + 3D-refiner sw,
+CUT,GAN,2D+3D-post,t2_flair,"37,252,324","1,325,444","38,577,768",23.6 (gen) + 3.5 (refiner),~1.0 h (+2D base),~25 s + 3D-refiner sw,
+CycleGAN,GAN,2.5D,t2,"22,754,308","2,650,888","25,405,196",63.6 x2 (gen) + 1.5/1.6 (D_A/D_B),~4.5 h,~16 s (triplanar),
+SwinPix2Pix,GAN,2.5D,t2,"1,445,056","5,531,012","6,976,068",8.4 (gen) + 4.3 (disc),~1.2 h,~30 s (triplanar),
+pix2pix,GAN,2.5D,t2,"37,024,865","5,531,012","42,555,877",22.2 (gen) + 4.3 (disc),~0.8 h,~25 s (triplanar),
+CUT,GAN,2D,t2,"37,090,593","1,323,396","38,413,989",23.6 (gen) + 1.5 (disc),~0.6 h,~25 s (triplanar),
+pix2pix,GAN,2D,t2,"37,022,817","5,531,012","42,553,829",22.1 (gen) + 4.3 (disc),~0.8 h,~25 s (triplanar),
+CUT,GAN,2.5D,t2,"37,096,865","1,323,396","38,420,261",24.0 (gen) + 1.5 (disc),~0.6 h,~25 s (triplanar),
+CycleGAN,GAN,2D,t2_flair,"22,748,035","2,648,840","25,396,875",63.4 x2 (gen) + 1.5 x2 (disc),~5.0 h,~16 s (triplanar),
+CycleGAN,GAN,2.5D,t2_flair,"22,760,581","2,652,936","25,413,517",63.8 x2 (gen) + ~1.6 x2 (disc),~4.5 h,~16 s (triplanar),
+pix2pix,GAN,2D,t2_flair,"37,023,394","5,533,060","42,556,454",22.2 (gen) + 4.3 (disc),~0.8 h,~25 s (triplanar),
+pix2pix,GAN,2.5D,t2_flair,"37,025,442","5,533,060","42,558,502",22.2 (gen) + 4.3 (disc),~0.8 h,~25 s (triplanar),
+CycleGAN,GAN,3D,t2,"47,258,114","5,286,276","52,544,390","46.2 x2 (gen, 64^3) + 3.4 x2 (disc)",~9.6-12.4 h,sw 64x64x32 patches,
+CUT,GAN,2.5D,t2_flair,"37,097,442","1,325,444","38,422,886",24.1 (gen) + 1.6 (disc),~0.6 h,~25 s (triplanar),
+SwinPix2Pix,GAN,2.5D,t2_flair,"1,445,093","5,533,060","6,978,153",8.4 (gen) + 4.3 (disc),~1.2 h,~30 s (triplanar),
+CycleGAN,GAN,3D,t2_flair,"47,280,067","5,290,372","52,570,439","49.1 x2 (gen, 64^3) + ~3.4 x2 (disc)",~9.6 h,sw 64x64x32 patches,
+CUT,GAN,2D,t2_flair,"37,091,170","1,325,444","38,416,614",23.6 (gen) + 1.6 (disc),~0.6 h,~25 s (triplanar),
+SwinPix2Pix,GAN,2D,t2_flair,"1,444,157","5,533,060","6,977,217",8.4 (gen) + 4.3 (disc),~1.2 h,~30 s (triplanar),
+SwinPix2Pix,GAN,3D,t2,"13,967,377","11,053,762","25,021,139","13.0 (gen, 64^3) + 6.0 (disc)",~4.9-5.0 h,sw 64x64x32 patches,no 3D Swin: reuses pix2pix-3D generator
+SwinPix2Pix,GAN,2D,t2,"1,444,120","5,531,012","6,975,132",8.4 (gen) + 4.3 (disc),~1.2 h,~30 s (triplanar),
+CUT,GAN,3D,t2,"23,629,057","2,643,138","26,272,195","46.2 (gen, 64^3) + 3.4 (disc)",~3.6-4.0 h,sw 64x64x32 patches,CUT-3D generator = same 3D ResNet backbone as CycleGAN-3D (PatchNCE hooks add 0 weights)
+SwinPix2Pix,GAN,3D,t2_flair,"13,968,242","11,057,858","25,026,100","13.2 (gen, 64^3) + 6.1 (disc)",~5.0 h,sw 64x64x32 patches,idem
+pix2pix,GAN,3D,t2,"13,967,377","11,053,762","25,021,139","13.0 (gen, 64^3) + 6.0 (disc)",~4.7-5.0 h,sw 64x64x32 patches,
+pix2pix,GAN,3D,t2_flair,"13,968,242","11,057,858","25,026,100","13.2 (gen, 64^3) + 6.1 (disc)",~5.0 h,sw 64x64x32 patches,
+CycleGAN,GAN,2D,t2,"22,741,762","2,646,792","25,388,554",63.1 x2 (G_AB+G_BA) + 1.5 x2 (D_A+D_B),~4.5-5.0 h,~16 s (triplanar),
+CUT,GAN,3D,t2_flair,"23,640,034","2,647,234","26,287,268","49.1 (gen, 64^3) + 3.5 (disc)",~4.0 h,sw 64x64x32 patches,idem
+ResViT,ResViT,2D+3D-refine,t2,"18,304,610","2,763,713","21,068,323",157.1 + 239.2 (refine 128^3),~5.5 h,~0.72 / 1.28 s (+1 Refine3D),
+ResViT,ResViT,2D+3D-refine,t2_flair,"18,309,476","2,764,737","21,074,213",157.5 + 246.4,~7-8 h,~0.70 / 1.25 s,
+ResViT,ResViT,2.5D,t2_flair,"18,256,898","2,766,785","21,023,683",158.3,~3.9 h,~0.74 / 1.33 s,
+SynDiff,SynDiff,ResViT->SynDiff cascade,t2,"30,343,203","9,982,466","40,325,669",157.9 + 286.0/fwd (x4),~6.5 h (+ ResViT 3.85 h prereq),~0.71 + ~2.15 s ~ 2.86 s,trainable part = the 12.1M diffusion refiner; ResViT frozen
+SynDiff,SynDiff,2D,t2,"12,089,442","7,216,705","19,306,147",286.0/fwd (x4 = 1144 / sample),~13.1 h,"~2.15 / 3.69 s (~50/90 sl, b8)",
+SynDiff,SynDiff,2.5D,t2,"12,091,172","7,216,705","19,307,877",287.4/fwd (x4 = 1150),~13.2 h,~2.16 / 3.70 s,
+ResViT,ResViT,2.5D,t2,"18,253,761","2,765,761","21,019,522",157.9,~3.85 h,~0.71 / 1.27 s,
+ResViT,ResViT,2D,t2,"18,247,489","2,763,713","21,011,202",157.1,~5.0 h,~0.70 / 1.26 s (~50/90 sl),
+SynDiff,SynDiff,ResViT+SynDiff joint,t2,"30,343,203","9,982,466","40,325,669",157.9 + 286.0/fwd (x4),~4.7 h (+ ResViT 3.85 h + cascade prereq),~0.71 + ~2.15 s ~ 2.86 s,
+ResViT,ResViT,2D,t2_flair,"18,250,626","2,764,737","21,015,363",157.5,~4.3 h,~0.68 / 1.23 s,
+ResViT,ResViT,3D,t2,"23,778,113","6,224,593","30,002,706","800.1 (96^3 patch, ngf=48)",~6.0 h,~0.39 s (8x 96^3 patches),
+SynDiff,SynDiff,2.5D,t2_flair,"12,092,037","7,216,833","19,308,870",288.1/fwd (x4 = 1152),~6.9 h,~2.15 / 3.68 s,
+SynDiff,SynDiff,3D+3D-refine,t2,"12,301,699","8,781,050","21,082,749",286.0/fwd (x4) + 886.3 (refiner 128^3),~4.0 h (+2D Stage1),~2.31 / 3.85 s (2D coarse + 1 Refiner3D),label '3D+3D-refine' in rescore CSV; actually 2D diffusion Stage1 + 3D ResNet refiner
+SynDiff,SynDiff,2D,t2_flair,"12,090,307","7,216,833","19,307,140",286.7/fwd (x4 = 1147),~11.2 h,~2.18 / 3.73 s,
+ResViT,ResViT,3D,t2_flair,"23,794,578","6,227,665","30,022,243",829.2 (96^3 patch),~6.5 h,~0.39 s (8x 96^3 patches),
+SynDiff,SynDiff,"2D (full SynDiff, untuned)",t2,"~156M (full SynDiff, not benchmarked)",~? (not benchmarked),,not measured,"~? (80 ep, ngf 64, bs 1; not measured)",not measured (~10-15 s/vol est.),reference only; n=4 subjects have saved volumes
+SynDiff,SynDiff,3D,t2_flair,"5,423,218","9,119,185","14,542,403",254.9/fwd (x4 = 1020),~4.7 h,~4.89 s (27x 64^3 patches),
+SynDiff,SynDiff,3D,t2,"5,421,921","9,119,089","14,541,010","254.2/fwd (x4 = 1017, 64^3 patch)",~5.4 h,~4.89 s (27x 64^3 patches),
+SynDiff,SynDiff,3D+3D-refine,t2_flair,"12,319,029","8,782,714","21,101,743",286.7/fwd (x4) + 955.4 (refiner 128^3),~4.0 h (+2D Stage1),~2.34 / 3.89 s,idem

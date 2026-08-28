@@ -1,0 +1,14 @@
+{
+  "channel_names": {
+    "0": "T2"
+  },
+  "labels": {
+    "background": 0,
+    "tumor": 1,
+    "cavity": 2
+  },
+  "numTraining": 117,
+  "file_ending": ".nii.gz",
+  "name": "T2",
+  "description": "ReMIND T2 -> tumor/cavity segmentation (downstream synthesis benchmark)"
+}

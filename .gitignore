@@ -1,0 +1,136 @@
+# ---------------------------------------------------------------------------
+# SECRETS — keep first so nothing below can accidentally re-include them.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.ppk
+.netrc
+_netrc
+.aws/
+.ssh/
+*credentials*
+*secret*
+settings.local.json
+
+# ---------------------------------------------------------------------------
+# PRIVATE PATIENT COHORTS — must never enter this repository in any form.
+# Case-explicit patterns (do NOT rely on core.ignorecase, which is a
+# Windows-only default and would let these through on Linux/macOS).
+# ---------------------------------------------------------------------------
+**/Bratislava/
+**/bratislava/
+**/Bratislava-input/
+**/bratislava-input/
+**/bratislava_outputs/
+**/subjects_corrected/
+**/low_grade_outputs/
+**/realtime_video/
+**/IOUS-DATABASE-RHUH/
+**/ANON_*/
+DICOMDIR
+
+# ---------------------------------------------------------------------------
+# Data — never commit imaging data to this repository.
+# ReMIND is distributed by TCIA (see DATA.md); the external pilot cohort is
+# private patient data and must never appear here in any form.
+# ---------------------------------------------------------------------------
+*.nii
+*.nii.gz
+*.dcm
+*.mha
+*.mhd
+*.npy
+*.npz
+data/
+datasets/
+nnUNet_raw/
+nnUNet_preprocessed/
+**/Bratislava*/
+**/bratislava_data/
+**/inputs_gan*/
+**/inputs_rs*/
+**/segs_T2/
+**/segs_FLAIR/
+**/test_inputs_*/
+
+# ---------------------------------------------------------------------------
+# Model weights and predictions — released separately (see WEIGHTS.md).
+# ---------------------------------------------------------------------------
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.weights.h5
+*.pkl
+checkpoints/
+nnUNet_results/
+predictions/
+predictions_*/
+preds/
+preds_*/
+output/
+outputs/
+
+# ---------------------------------------------------------------------------
+# Logs and run artefacts
+# ---------------------------------------------------------------------------
+*.log
+logs/
+runs/
+wandb/
+.tensorboard/
+*_training.log
+
+# ---------------------------------------------------------------------------
+# Superseded / working artefacts
+# ---------------------------------------------------------------------------
+superseded_*/
+*_SUPERSEDED_*
+*.docx
+*.zip
+# Built manuscript artefacts: PDFs embed whatever the sources said at build time,
+# so never ship them from this repo (they are the paper's job, not the code's).
+*.pdf
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+*venv*/
+**/pyvenv.cfg
+site-packages/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# ---------------------------------------------------------------------------
+# LaTeX build artefacts
+# ---------------------------------------------------------------------------
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

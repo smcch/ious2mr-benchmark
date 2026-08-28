@@ -1,0 +1,41 @@
+# PyTorch environment — ResViT, SynDiff, the nnU-Net downstream evaluation and
+# the metric/figure harness. This is the environment the paper's PyTorch results
+# were produced in (versions captured from the authors' machine).
+#
+#   conda env create -f envs/environment-pytorch.yml
+#   conda activate ious2mr-torch
+#
+# GPU note: torch is pinned to the CUDA 12.1 build. Install a wheel matching your
+# driver if 12.1 is not appropriate:
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+name: ious2mr-torch
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # --- core DL ---
+      - torch==2.5.1
+      - torchvision==0.20.1
+      # --- imaging I/O ---
+      - nibabel==5.3.2
+      - SimpleITK==2.4.0
+      # --- numerics ---
+      - numpy==1.26.4
+      - scipy==1.14.1
+      - scikit-image==0.25.2
+      - pandas==2.2.3
+      # --- model components ---
+      - einops==0.8.2
+      - timm==1.0.22
+      # --- evaluation ---
+      - lpips==0.1.4
+      # --- downstream segmentation ---
+      - nnunetv2==2.7.0
+      - batchgenerators==0.25.1
+      - acvl-utils==0.2.6
+      # --- figures / stats ---
+      - matplotlib==3.10.8
+      - statsmodels>=0.14
+      - openpyxl>=3.1

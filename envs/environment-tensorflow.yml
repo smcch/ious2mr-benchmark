@@ -1,0 +1,22 @@
+# TensorFlow environment — the four GAN baselines (Pix2Pix, SwinPix2Pix,
+# CycleGAN, CUT) in all four inference regimes.
+#
+#   conda env create -f envs/environment-tensorflow.yml
+#   conda activate ious2mr-tf
+#
+# GPU note: TensorFlow 2.20 GPU support on Windows requires WSL2 (the authors ran
+# the GAN pipeline inside WSL2 Ubuntu). On native Linux no extra step is needed.
+name: ious2mr-tf
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - tensorflow[and-cuda]==2.20.0
+      - numpy==1.26.4
+      - nibabel==5.3.2
+      - scipy==1.14.1
+      - scikit-image==0.25.2
+      - matplotlib==3.10.8
+      - pandas==2.2.3

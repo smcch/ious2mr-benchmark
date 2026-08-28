@@ -1,0 +1,65 @@
+channel,endpoint,metric,estimator,value,ci_low,ci_high,n_obs,n_subjects,n_experiments,extra
+T2,dice,LPIPS,naive_pooled_r,-0.512,,,1128,28,48,p=5.397e-05
+T2,dice,LPIPS,cluster_bootstrap_by_family,-0.426,-0.707,+0.203,1128,28,48,frac_same_sign=0.92
+T2,dice,LPIPS,within_subject_r_median,-0.283,-0.609,+0.321,1128,28,48,n_subjects_w_r=28; frac_same_sign=0.61
+T2,dice,LPIPS,mixed_effects_partial_r,-0.091,,,1128,28,48,beta_z=-0.107; t=-3.08; p=0.002059; n_obs=1128
+T2,dice,SSIM,naive_pooled_r,-0.458,,,1128,28,48,p=0.0004688
+T2,dice,SSIM,cluster_bootstrap_by_family,-0.352,-0.664,+0.454,1128,28,48,frac_same_sign=0.91
+T2,dice,SSIM,within_subject_r_median,+0.004,-0.411,+0.391,1128,28,48,n_subjects_w_r=28; frac_same_sign=0.50
+T2,dice,SSIM,mixed_effects_partial_r,+0.047,,,1128,28,48,beta_z=+0.082; t=+1.57; p=0.1156; n_obs=1128
+T2,dice,PSNR,naive_pooled_r,+0.338,,,1128,28,48,p=0.0148
+T2,dice,PSNR,cluster_bootstrap_by_family,+0.335,+0.086,+0.538,1128,28,48,frac_same_sign=1.00
+T2,dice,PSNR,within_subject_r_median,+0.164,-0.006,+0.394,1128,28,48,n_subjects_w_r=28; frac_same_sign=0.71
+T2,dice,PSNR,mixed_effects_partial_r,+0.144,,,1128,28,48,beta_z=+0.196; t=+4.87; p=1.099e-06; n_obs=1128
+T2,dice,MAE,naive_pooled_r,-0.295,,,1128,28,48,p=0.03614
+T2,dice,MAE,cluster_bootstrap_by_family,-0.316,-0.497,-0.100,1128,28,48,frac_same_sign=1.00
+T2,dice,MAE,within_subject_r_median,-0.149,-0.336,+0.034,1128,28,48,n_subjects_w_r=28; frac_same_sign=0.68
+T2,dice,MAE,mixed_effects_partial_r,-0.153,,,1128,28,48,beta_z=-0.220; t=-5.21; p=1.886e-07; n_obs=1128
+T2,nsd,LPIPS,naive_pooled_r,-0.784,,,1122,28,48,p=0
+T2,nsd,LPIPS,cluster_bootstrap_by_family,-0.718,-0.887,-0.214,1122,28,48,frac_same_sign=1.00
+T2,nsd,LPIPS,within_subject_r_median,-0.429,-0.698,+0.131,1122,28,48,n_subjects_w_r=28; frac_same_sign=0.68
+T2,nsd,LPIPS,mixed_effects_partial_r,-0.194,,,1122,28,48,beta_z=-0.195; t=-6.62; p=3.562e-11; n_obs=1122
+T2,nsd,SSIM,naive_pooled_r,-0.780,,,1122,28,48,p=0
+T2,nsd,SSIM,cluster_bootstrap_by_family,-0.674,-0.873,+0.268,1122,28,48,frac_same_sign=0.92
+T2,nsd,SSIM,within_subject_r_median,-0.217,-0.664,+0.246,1122,28,48,n_subjects_w_r=28; frac_same_sign=0.61
+T2,nsd,SSIM,mixed_effects_partial_r,+0.010,,,1122,28,48,beta_z=+0.015; t=+0.32; p=0.7468; n_obs=1122
+T2,nsd,PSNR,naive_pooled_r,+0.298,,,1122,28,48,p=0.0341
+T2,nsd,PSNR,cluster_bootstrap_by_family,+0.267,-0.092,+0.572,1122,28,48,frac_same_sign=0.87
+T2,nsd,PSNR,within_subject_r_median,+0.159,-0.078,+0.420,1122,28,48,n_subjects_w_r=28; frac_same_sign=0.68
+T2,nsd,PSNR,mixed_effects_partial_r,+0.114,,,1122,28,48,beta_z=+0.132; t=+3.83; p=0.0001269; n_obs=1122
+T2,nsd,MAE,naive_pooled_r,-0.199,,,1122,28,48,p=0.1681
+T2,nsd,MAE,cluster_bootstrap_by_family,-0.205,-0.455,+0.137,1122,28,48,frac_same_sign=0.85
+T2,nsd,MAE,within_subject_r_median,-0.054,-0.348,+0.082,1122,28,48,n_subjects_w_r=28; frac_same_sign=0.64
+T2,nsd,MAE,mixed_effects_partial_r,-0.118,,,1122,28,48,beta_z=-0.144; t=-3.99; p=6.731e-05; n_obs=1122
+FLAIR,dice,LPIPS,naive_pooled_r,+0.128,,,408,17,24,p=0.5459
+FLAIR,dice,LPIPS,cluster_bootstrap_by_family,+0.090,-0.531,+0.692,408,17,24,frac_same_sign=0.62
+FLAIR,dice,LPIPS,within_subject_r_median,+0.048,-0.340,+0.329,408,17,24,n_subjects_w_r=17; frac_same_sign=0.53
+FLAIR,dice,LPIPS,mixed_effects_partial_r,+0.072,,,408,17,24,beta_z=+0.065; t=+1.46; p=0.1453; n_obs=408
+FLAIR,dice,SSIM,naive_pooled_r,+0.287,,,408,17,24,p=0.1607
+FLAIR,dice,SSIM,cluster_bootstrap_by_family,+0.267,-0.301,+0.690,408,17,24,frac_same_sign=0.81
+FLAIR,dice,SSIM,within_subject_r_median,+0.221,-0.377,+0.400,408,17,24,n_subjects_w_r=17; frac_same_sign=0.59
+FLAIR,dice,SSIM,mixed_effects_partial_r,+0.031,,,408,17,24,beta_z=+0.028; t=+0.63; p=0.5282; n_obs=408
+FLAIR,dice,PSNR,naive_pooled_r,+0.284,,,408,17,24,p=0.1648
+FLAIR,dice,PSNR,cluster_bootstrap_by_family,+0.249,-0.126,+0.556,408,17,24,frac_same_sign=0.91
+FLAIR,dice,PSNR,within_subject_r_median,+0.187,-0.099,+0.431,408,17,24,n_subjects_w_r=17; frac_same_sign=0.59
+FLAIR,dice,PSNR,mixed_effects_partial_r,+0.064,,,408,17,24,beta_z=+0.074; t=+1.28; p=0.199; n_obs=408
+FLAIR,dice,MAE,naive_pooled_r,-0.300,,,408,17,24,p=0.1403
+FLAIR,dice,MAE,cluster_bootstrap_by_family,-0.269,-0.548,+0.093,408,17,24,frac_same_sign=0.94
+FLAIR,dice,MAE,within_subject_r_median,-0.236,-0.437,+0.172,408,17,24,n_subjects_w_r=17; frac_same_sign=0.59
+FLAIR,dice,MAE,mixed_effects_partial_r,-0.063,,,408,17,24,beta_z=-0.080; t=-1.26; p=0.206; n_obs=408
+FLAIR,nsd,LPIPS,naive_pooled_r,-0.446,,,395,17,24,p=0.01956
+FLAIR,nsd,LPIPS,cluster_bootstrap_by_family,-0.399,-0.565,-0.063,395,17,24,frac_same_sign=0.98
+FLAIR,nsd,LPIPS,within_subject_r_median,-0.112,-0.515,+0.144,395,17,24,n_subjects_w_r=16; frac_same_sign=0.56
+FLAIR,nsd,LPIPS,mixed_effects_partial_r,-0.004,,,395,17,24,beta_z=-0.004; t=-0.09; p=0.9294; n_obs=395
+FLAIR,nsd,SSIM,naive_pooled_r,-0.442,,,395,17,24,p=0.02098
+FLAIR,nsd,SSIM,cluster_bootstrap_by_family,-0.372,-0.779,+0.518,395,17,24,frac_same_sign=0.91
+FLAIR,nsd,SSIM,within_subject_r_median,-0.043,-0.719,+0.195,395,17,24,n_subjects_w_r=16; frac_same_sign=0.50
+FLAIR,nsd,SSIM,mixed_effects_partial_r,-0.129,,,395,17,24,beta_z=-0.118; t=-2.59; p=0.009645; n_obs=395
+FLAIR,nsd,PSNR,naive_pooled_r,+0.242,,,395,17,24,p=0.2416
+FLAIR,nsd,PSNR,cluster_bootstrap_by_family,+0.227,-0.587,+0.795,395,17,24,frac_same_sign=0.79
+FLAIR,nsd,PSNR,within_subject_r_median,+0.140,-0.162,+0.296,395,17,24,n_subjects_w_r=16; frac_same_sign=0.56
+FLAIR,nsd,PSNR,mixed_effects_partial_r,+0.107,,,395,17,24,beta_z=+0.120; t=+2.13; p=0.03316; n_obs=395
+FLAIR,nsd,MAE,naive_pooled_r,-0.236,,,395,17,24,p=0.2538
+FLAIR,nsd,MAE,cluster_bootstrap_by_family,-0.243,-0.817,+0.526,395,17,24,frac_same_sign=0.79
+FLAIR,nsd,MAE,within_subject_r_median,-0.090,-0.362,+0.235,395,17,24,n_subjects_w_r=16; frac_same_sign=0.56
+FLAIR,nsd,MAE,mixed_effects_partial_r,-0.113,,,395,17,24,beta_z=-0.139; t=-2.25; p=0.02463; n_obs=395

@@ -1,0 +1,60 @@
+# Released model weights
+
+All trained weights are hosted outside GitHub (they exceed its 100 MB per-file limit) in a
+single archived record:
+
+> **Zenodo record: [TODO — DOI once minted]**
+
+Download them with the helper, which verifies checksums and lays the files out where the
+pipeline expects them:
+
+```bash
+python scripts/fetch_weights.py --list          # inventory and sizes
+python scripts/fetch_weights.py --all           # ~4.9 GB
+python scripts/fetch_weights.py --family resvit # a single family
+export IOUS2MR_CKPT=$PWD/weights
+```
+
+## Contents
+
+| Family | Files | Size | What it is |
+|---|---:|---:|---|
+| GAN baselines | 32 | 1.87 GiB | 24 × `generator_ema.weights.h5` (2D / 2.5D / full-3D) + 8 × `refiner_ema.weights.h5` (the 2D + 3D-refine variants, which reuse the corresponding 2D generator) |
+| ResViT | 10 | 1.23 GB | `p2_best.pth` per experiment — the phase-2 best checkpoint, the one used at inference — plus the 3D refinement heads |
+| SynDiff | 13 | 0.57 GB | the selected diffusive generator per experiment (`gen_diffusive_2_<epoch>.pth`) plus refiners |
+| nnU-Net downstream | 10 | ~1.26 GB | Seg-T2 and Seg-FLAIR, 5 folds each (`checkpoint_best.pth`), with the plans/dataset JSONs already in `configs/nnunet/` |
+| **Total** | **65** | **≈ 4.9 GB** | |
+
+Intermediate training checkpoints are **not** released: the SynDiff tree alone holds ~17 GB of
+per-epoch snapshots, of which only the selected epochs (documented in
+[`docs/scoring_protocol.md`](docs/scoring_protocol.md)) are needed to reproduce the paper.
+
+## Archive layout
+
+```
+weights/
+  gan/<architecture>_<regime>_<target>/generator_ema.weights.h5
+  gan/<architecture>_2d_3dpost_<target>/refiner_ema.weights.h5
+  resvit/ResViT-<regime>-<target>/p2_best.pth
+  syndiff/<experiment>/gen_diffusive_2_<epoch>.pth
+  nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_<k>/checkpoint_best.pth
+  nnunet/Dataset502_FLAIR/...
+```
+
+`configs/weights_manifest.json` maps every experiment name in the paper to its file, size and
+SHA-256 checksum.
+
+## ⚠ Licence of the diffusion weights
+
+The SynDiff implementation derives from **NVIDIA's DDGAN**, distributed under the NVIDIA Source
+Code License, which limits the work *and its derivatives* to **non-commercial research use**.
+The `syndiff/` weights in this archive are therefore released for non-commercial research only.
+All other weights follow the repository licence. See
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+## Reproducibility note
+
+Weights were trained on a single workstation (NVIDIA RTX 4080 SUPER, 16 GB; a few ResViT runs on
+an RTX 3090). Exact software versions are pinned in [`envs/`](envs/). Re-training from scratch
+reproduces the reported trends but not bit-identical numbers: the pipelines use non-deterministic
+GPU kernels and, for the GAN family, TensorFlow data-pipeline shuffling.
