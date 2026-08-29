@@ -44,7 +44,7 @@ import resvit_final as RF
 # ============================================================================
 # CONFIG OVERRIDES for the _fullres run
 # ============================================================================
-DATA_DIR   = r"G:\ECOGRAFIA\SINTESIS\dataset-registration-baseline\cropped"   # native full-res, cropped to US-FOV cone, MR masked
+DATA_DIR   = os.path.join(str(PROJECT_ROOT), *r"dataset-registration-baseline\cropped".split(chr(92)))   # native full-res, cropped to US-FOV cone, MR masked
 SPLIT_JSON = os.path.join(str(PROJECT_ROOT), "resvit", "subject_split.json")
 RUN_SUFFIX = "_fullres"
 VARIANT    = "2.5d"

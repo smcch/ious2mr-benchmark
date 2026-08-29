@@ -1,0 +1,14 @@
+The CSV tables in this directory are derived from the ReMIND database
+(Juvekar et al., The Cancer Imaging Archive, DOI 10.7937/3RAG-D070), which is
+distributed under the Creative Commons Attribution 4.0 International licence
+(CC BY 4.0). As a derived work they are released under the same licence.
+
+Attribution required:
+
+  Juvekar, P., Dorent, R., Kögl, F., et al. (2023). The Brain Resection
+  Multimodal Imaging Database (ReMIND) (Version 1) [Data set].
+  The Cancer Imaging Archive. https://doi.org/10.7937/3RAG-D070
+
+Full licence: https://creativecommons.org/licenses/by/4.0/
+
+The code that produced these tables is licensed separately; see ../LICENSE.

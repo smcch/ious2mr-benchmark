@@ -10,11 +10,11 @@ The pre-existing benchmark (`rescore_all.py` -> `rescore_methods_*`) computes SS
 
 Same backbones as the paper benchmark, no ablations and no ensembles:
 
-**A. COMPARATIVA-3 GAN baselines (32 experiments).** `E:/SINTESIS/COMPARATIVA-3/<exp>/predictions/<subj>_{pred,target}_{t2,flair}.nii.gz`. Families: `pix2pix`, `CUT`, `CycleGAN`, `SwinPix2Pix`. Architectures: `2D`, `2.5D`, `2D+3D-post`, `3D`. Targets: `T2` (single output) and `T2+FLAIR` (dual output).
+**A. COMPARATIVA-3 GAN baselines (32 experiments).** `$IOUS2MR_ROOT/COMPARATIVA-3/<exp>/predictions/<subj>_{pred,target}_{t2,flair}.nii.gz`. Families: `pix2pix`, `CUT`, `CycleGAN`, `SwinPix2Pix`. Architectures: `2D`, `2.5D`, `2D+3D-post`, `3D`. Targets: `T2` (single output) and `T2+FLAIR` (dual output).
 
-**B. ResViT (8 experiments).** `E:/SINTESIS/resvit/output/ResViT-<variant>-<target>/predictions/<subj>/{pred,tgt}_{t2,fl}.nii.gz`. Variants: `2D`, `2.5D`, `2D+3D-refine`, `3D`. Targets: `T2`, `T2+FLAIR`.
+**B. ResViT (8 experiments).** `$IOUS2MR_ROOT/resvit/output/ResViT-<variant>-<target>/predictions/<subj>/{pred,tgt}_{t2,fl}.nii.gz`. Variants: `2D`, `2.5D`, `2D+3D-refine`, `3D`. Targets: `T2`, `T2+FLAIR`.
 
-**C. SynDiff with saved NIfTI volumes (8 experiments).** `E:/SINTESIS/synthdiff/results/<run>/volumes/<subj>_{pred,gt}{T2,FLAIR}.nii.gz`. Variants: `2D`, `2.5D`, `3D`, `3D+3D-refine`. Targets: `T2`, `T2+FLAIR`. Best epochs (taken from `rescore_all.py`):
+**C. SynDiff with saved NIfTI volumes (8 experiments).** `$IOUS2MR_ROOT/synthdiff/results/<run>/volumes/<subj>_{pred,gt}{T2,FLAIR}.nii.gz`. Variants: `2D`, `2.5D`, `3D`, `3D+3D-refine`. Targets: `T2`, `T2+FLAIR`. Best epochs (taken from `rescore_all.py`):
 
 | method label | folder | ckpt |
 |---|---|---|
@@ -45,7 +45,7 @@ Both cohorts are fully covered by the MRI segmentation directory (`30/30` and `2
 
 ## 4. Segmentation source and label semantics
 
-MRI segmentations live at `E:/SINTESIS/Segmentations/MRI/<subject>-mri-segmentation.nii.gz`. Label conventions (verified by survey across all 150 files):
+MRI segmentations live at `$IOUS2MR_ROOT/Segmentations/MRI/<subject>-mri-segmentation.nii.gz`. Label conventions (verified by survey across all 150 files):
 
 - `0` = background
 - `1` = **tumor** (solid tumor; pre-op, or residual post-op)

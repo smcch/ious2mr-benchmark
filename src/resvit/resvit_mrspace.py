@@ -43,7 +43,7 @@ import resvit_final as RF
 # ============================================================================
 # CONFIG OVERRIDES for the _fullres run
 # ============================================================================
-DATA_DIR   = r"G:\ECOGRAFIA\SINTESIS\dataset-registration-MRspace\cropped"   # common space = MR native grid; US registered in (baseline L2R); cropped to US-FOV cone, MR masked
+DATA_DIR   = os.path.join(str(PROJECT_ROOT), *r"dataset-registration-MRspace\cropped".split(chr(92)))   # common space = MR native grid; US registered in (baseline L2R); cropped to US-FOV cone, MR masked
 SPLIT_JSON = os.path.join(str(PROJECT_ROOT), "resvit", "subject_split.json")
 RUN_SUFFIX = "_mrspace"
 VARIANT    = "2.5d"

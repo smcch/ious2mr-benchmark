@@ -10,12 +10,14 @@ explicit and the script refuses to copy anything matching DENY.
 """
 from __future__ import annotations
 
+import os
+
 import shutil
 import sys
 from pathlib import Path
 
-SRC = Path(r"E:\SINTESIS")
-DST = Path(r"E:\SINTESIS\ious2mr-benchmark")
+SRC = Path(os.environ.get("IOUS2MR_SOURCE_TREE", "."))
+DST = Path(__file__).resolve().parents[1]
 
 # Any path containing one of these fragments is never copied, whatever the manifest says.
 DENY = ("bratislava", "Bratislava", "realtime_video", "low_grade_outputs",
@@ -44,8 +46,8 @@ MANIFEST: list[tuple[str, str]] = [
     ("resvit/run_ablations_v2.sh",                   "src/resvit/launchers/run_ablations_v2.sh"),
 
     # ---------------- SynDiff (PyTorch, adversarial diffusion) ----------------
-    # NOTE: src/syndiff/vendor/ holds upstream SynDiff/DDGAN code. Some files carry
-    # NVIDIA headers restricting use to NON-COMMERCIAL research (see THIRD_PARTY_NOTICES.md).
+    # NOTE: upstream SynDiff/DDGAN code is NOT vendored (non-commercial licence);
+    # scripts/setup_syndiff_upstream.py fetches it at a pinned commit.
     ("synthdiff/backbones3d.py",                     "src/syndiff/backbones3d.py"),
     ("synthdiff/build_unified_final.py",             "src/syndiff/build_unified_final.py"),
     ("synthdiff/eval_resvit_protocol.py",            "src/syndiff/eval_resvit_protocol.py"),

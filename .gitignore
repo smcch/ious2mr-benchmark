@@ -134,3 +134,6 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Upstream SynDiff sources, fetched on demand (see scripts/setup_syndiff_upstream.py)
+src/syndiff/_upstream/

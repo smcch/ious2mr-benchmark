@@ -10,7 +10,7 @@ pipeline expects them:
 
 ```bash
 python scripts/fetch_weights.py --list          # inventory and sizes
-python scripts/fetch_weights.py --all           # ~4.9 GB
+python scripts/fetch_weights.py --all           # 4.55 GiB
 python scripts/fetch_weights.py --family resvit # a single family
 export IOUS2MR_CKPT=$PWD/weights
 ```
@@ -20,10 +20,10 @@ export IOUS2MR_CKPT=$PWD/weights
 | Family | Files | Size | What it is |
 |---|---:|---:|---|
 | GAN baselines | 32 | 1.87 GiB | 24 × `generator_ema.weights.h5` (2D / 2.5D / full-3D) + 8 × `refiner_ema.weights.h5` (the 2D + 3D-refine variants, which reuse the corresponding 2D generator) |
-| ResViT | 10 | 1.23 GB | `p2_best.pth` per experiment — the phase-2 best checkpoint, the one used at inference — plus the 3D refinement heads |
-| SynDiff | 13 | 0.57 GB | the selected diffusive generator per experiment (`gen_diffusive_2_<epoch>.pth`) plus refiners |
-| nnU-Net downstream | 10 | ~1.26 GB | Seg-T2 and Seg-FLAIR, 5 folds each (`checkpoint_best.pth`), with the plans/dataset JSONs already in `configs/nnunet/` |
-| **Total** | **65** | **≈ 4.9 GB** | |
+| ResViT | 8 | 1.14 GiB | `p2_best.pth` per experiment — the phase-2 best checkpoint, the one used at inference — plus the 3D refinement heads |
+| SynDiff | 10 | 0.31 GiB | the selected diffusive generator per experiment (`gen_diffusive_2_<epoch>.pth`) plus refiners |
+| nnU-Net downstream | 16 | 1.23 GiB | Seg-T2 and Seg-FLAIR, 5 folds each (`checkpoint_best.pth`), with the plans/dataset JSONs already in `configs/nnunet/` |
+| **Total** | **66** | **4.55 GiB** | |
 
 Intermediate training checkpoints are **not** released: the SynDiff tree alone holds ~17 GB of
 per-epoch snapshots, of which only the selected epochs (documented in

@@ -3,7 +3,7 @@ rescore_roi.py  --  ROI-restricted re-score of US->MRI synthesis methods.
 
 Same harness as `rescore_all.py` (same SSIM/PSNR/MAE/LPIPS primitives, same cohorts),
 but each metric is restricted to a lesion-aware mask built from
-`E:/SINTESIS/Segmentations/MRI/<subject>-mri-segmentation.nii.gz`:
+`$IOUS2MR_ROOT/Segmentations/MRI/<subject>-mri-segmentation.nii.gz`:
 
   ROI = "lesion" = (label >= 1)   # tumor + cavity
   dilations: 0 mm and 5 mm        # 5 mm = anisotropic-aware via distance_transform_edt
@@ -27,7 +27,7 @@ Methods EXCLUDED (per user request / no usable NIfTI):
   - any `_fullres`, `_mrspace`, `ablation/*`
   - SynDiff ensembles, joint, cascade  (ensembles per user request; joint/cascade CSV-only)
 
-Outputs in E:/SINTESIS/evaluacion-final/ (new file names; nothing existing is overwritten):
+Outputs in $IOUS2MR_ROOT/evaluacion-final/ (new file names; nothing existing is overwritten):
   roi_methods_persubject.csv  - one row per (method, channel, subject, roi, dilation_mm)
   roi_methods_summary.csv     - mean/sd/ci95/median/min/max/n per (method, channel, roi, dilation_mm)
   roi_methods_rankings_t2.csv, roi_methods_rankings_flair.csv  (lesion@0mm and lesion@5mm, sorted by SSIM)
@@ -688,14 +688,14 @@ def write_methodology_md(rank_t2_all, rank_fl_all):
     L.append("## 2. Universe of methods (48 experiments)\n\n")
     L.append("Same backbones as the paper benchmark, no ablations and no ensembles:\n\n")
     L.append("**A. COMPARATIVA-3 GAN baselines (32 experiments).** "
-             "`E:/SINTESIS/COMPARATIVA-3/<exp>/predictions/<subj>_{pred,target}_{t2,flair}.nii.gz`. "
+             "`$IOUS2MR_ROOT/COMPARATIVA-3/<exp>/predictions/<subj>_{pred,target}_{t2,flair}.nii.gz`. "
              "Families: `pix2pix`, `CUT`, `CycleGAN`, `SwinPix2Pix`. Architectures: `2D`, `2.5D`, "
              "`2D+3D-post`, `3D`. Targets: `T2` (single output) and `T2+FLAIR` (dual output).\n\n")
     L.append("**B. ResViT (8 experiments).** "
-             "`E:/SINTESIS/resvit/output/ResViT-<variant>-<target>/predictions/<subj>/{pred,tgt}_{t2,fl}.nii.gz`. "
+             "`$IOUS2MR_ROOT/resvit/output/ResViT-<variant>-<target>/predictions/<subj>/{pred,tgt}_{t2,fl}.nii.gz`. "
              "Variants: `2D`, `2.5D`, `2D+3D-refine`, `3D`. Targets: `T2`, `T2+FLAIR`.\n\n")
     L.append("**C. SynDiff with saved NIfTI volumes (8 experiments).** "
-             "`E:/SINTESIS/synthdiff/results/<run>/volumes/<subj>_{pred,gt}{T2,FLAIR}.nii.gz`. "
+             "`$IOUS2MR_ROOT/synthdiff/results/<run>/volumes/<subj>_{pred,gt}{T2,FLAIR}.nii.gz`. "
              "Variants: `2D`, `2.5D`, `3D`, `3D+3D-refine`. Targets: `T2`, `T2+FLAIR`. "
              "Best epochs (taken from `rescore_all.py`):\n\n")
     L.append("| method label | folder | ckpt |\n|---|---|---|\n"
@@ -729,7 +729,7 @@ def write_methodology_md(rank_t2_all, rank_fl_all):
              f"(`{len(T2SET_SEG)}/{len(T2SET)}` and `{len(FLSET_SEG)}/{len(FLSET)}` with seg).\n")
 
     L.append("\n## 4. Segmentation source and label semantics\n\n")
-    L.append("MRI segmentations live at `E:/SINTESIS/Segmentations/MRI/"
+    L.append("MRI segmentations live at `$IOUS2MR_ROOT/Segmentations/MRI/"
              "<subject>-mri-segmentation.nii.gz`. Label conventions (verified by survey across "
              "all 150 files):\n\n"
              "- `0` = background\n- `1` = **tumor** (solid tumor; pre-op, or residual post-op)\n"

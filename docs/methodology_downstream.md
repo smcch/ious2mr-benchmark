@@ -195,9 +195,9 @@ $IOUS2MR_ROOT\downstream_seg\
 
 Env-vars required for every nnU-Net invocation:
 ```bash
-export nnUNet_raw="E:/SINTESIS/downstream_seg/nnUNet_raw"
-export nnUNet_preprocessed="E:/SINTESIS/downstream_seg/nnUNet_preprocessed"
-export nnUNet_results="E:/SINTESIS/downstream_seg/nnUNet_results"
+export nnUNet_raw="$IOUS2MR_ROOT/downstream_seg/nnUNet_raw"
+export nnUNet_preprocessed="$IOUS2MR_ROOT/downstream_seg/nnUNet_preprocessed"
+export nnUNet_results="$IOUS2MR_ROOT/downstream_seg/nnUNet_results"
 ```
 
 ## 7. Reproduce

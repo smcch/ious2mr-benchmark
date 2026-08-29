@@ -1,0 +1,470 @@
+{
+  "description": "Trained weights for the ioUS->MR synthesis benchmark. See WEIGHTS.md; the syndiff family is non-commercial research use only.",
+  "base_url": "https://zenodo.org/records/[TODO-RECORD]/files",
+  "total_bytes": 4888294900,
+  "n_files": 66,
+  "files": [
+    {
+      "family": "gan",
+      "experiment": "pix2pix_2d_t2",
+      "path": "gan/pix2pix_2d_t2/generator_ema.weights.h5",
+      "size_bytes": 148425512,
+      "sha256": "5eb8e5715acbfccb154a3d3a6576c19e471935da80113d188f31cca96be97ee4"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_25d_t2",
+      "path": "gan/pix2pix_25d_t2/generator_ema.weights.h5",
+      "size_bytes": 148433704,
+      "sha256": "9a37d5ac38a104cbd7dd5b80c32196bce572ddc08fd57c17a48e703daf7bd4f2"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_3d_t2",
+      "path": "gan/pix2pix_3d_t2/generator_ema.weights.h5",
+      "size_bytes": 56129816,
+      "sha256": "5ec887dcf8976cb047456e3e23e6caa6497a789dc7ea555199a381d5bb47b2fc"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_2d_3dpost_t2",
+      "path": "gan/pix2pix_2d_3dpost_t2/refiner_ema.weights.h5",
+      "size_bytes": 731144,
+      "sha256": "00aa3191a164174de5189b7ed69fd1b0292483e39e3a3ea083ab7b69cf7d1232"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_2d_t2_flair",
+      "path": "gan/pix2pix_2d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 148427816,
+      "sha256": "183823a1b991f2e3b6ad2254664c3dc776f9ec48dfa19d0141c0f3e94f68b694"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_25d_t2_flair",
+      "path": "gan/pix2pix_25d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 148436008,
+      "sha256": "35d48bc49d8f346fcbab12470cf97b0f0b69809a9ad6a3b1dd932cad40c7b2dd"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_3d_t2_flair",
+      "path": "gan/pix2pix_3d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 56133272,
+      "sha256": "2deeff38252d1f7741c8644f6fe04262817283ad0660e10542eb6833ca4bb156"
+    },
+    {
+      "family": "gan",
+      "experiment": "pix2pix_2d_3dpost_t2_flair",
+      "path": "gan/pix2pix_2d_3dpost_t2_flair/refiner_ema.weights.h5",
+      "size_bytes": 733960,
+      "sha256": "d32796312af3efa19f2f0168a7e2588dbed4eaf89c42d480b1b668f6b1cebdd5"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_2d_t2",
+      "path": "gan/swinpix2pix_2d_t2/generator_ema.weights.h5",
+      "size_bytes": 6086896,
+      "sha256": "7a64c0e7a943c6c134413f0d97c2ce4b46f0fbe4d9432b19a2b2c84877396877"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_25d_t2",
+      "path": "gan/swinpix2pix_25d_t2/generator_ema.weights.h5",
+      "size_bytes": 6090784,
+      "sha256": "f75256e84f25f5e2d6c1df0bdd7e07229652b46218ea4df72538d2f589a08e7e"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_3d_t2",
+      "path": "gan/swinpix2pix_3d_t2/generator_ema.weights.h5",
+      "size_bytes": 56129816,
+      "sha256": "61931e2115db042457c93c2c3fc887b3e874e8adc2448676645c6b08bd4ff8c6"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_2d_3dpost_t2",
+      "path": "gan/swinpix2pix_2d_3dpost_t2/refiner_ema.weights.h5",
+      "size_bytes": 731144,
+      "sha256": "72b6ef9af9755bef34d13fe8991b6e8e68da9f537c9157fa4348ecfad2240acf"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_2d_t2_flair",
+      "path": "gan/swinpix2pix_2d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 6086896,
+      "sha256": "d52b8ffe9d6f23271384939f218b0d4d6b838c342a4f482eea0264c6e50d4b51"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_25d_t2_flair",
+      "path": "gan/swinpix2pix_25d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 6090784,
+      "sha256": "aa3f686e548ecfcdc3605a746f133043ff4f565f1f209a01cb3ffdf439387d6b"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_3d_t2_flair",
+      "path": "gan/swinpix2pix_3d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 56133272,
+      "sha256": "a5123b4d6d5ec660c01dffb0c327cfd6d988fd5f727f72e9a9eac0a364025a6a"
+    },
+    {
+      "family": "gan",
+      "experiment": "swinpix2pix_2d_3dpost_t2_flair",
+      "path": "gan/swinpix2pix_2d_3dpost_t2_flair/refiner_ema.weights.h5",
+      "size_bytes": 733960,
+      "sha256": "c09a1bff75597faa8b457025137ca76aa7080cae053f86f69e114847e2927e1a"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_2d_t2",
+      "path": "gan/cyclegan_2d_t2/generator_ema.weights.h5",
+      "size_bytes": 45665360,
+      "sha256": "49e3caa927fb8f5e38b7f3c3e1a992f24522eb2bbba5d16940dc021f2e9a9674"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_25d_t2",
+      "path": "gan/cyclegan_25d_t2/generator_ema.weights.h5",
+      "size_bytes": 45690448,
+      "sha256": "b294f2c3686d933ce9c2ce4517ecd550a3d5a2b13e86e8208c48a94eb8bbdcad"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_3d_t2",
+      "path": "gan/cyclegan_3d_t2/generator_ema.weights.h5",
+      "size_bytes": 94698496,
+      "sha256": "a235b69a9a52f996838bea78032076032bedee9de7890ff48dfa3ba2f4d4c5a5"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_2d_3dpost_t2",
+      "path": "gan/cyclegan_2d_3dpost_t2/refiner_ema.weights.h5",
+      "size_bytes": 731144,
+      "sha256": "3221506b21e8f714b6fbe3b49669ec730d00129503a75a825746e118a31698ca"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_2d_t2_flair",
+      "path": "gan/cyclegan_2d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 45677904,
+      "sha256": "89f4852a4affad89caf155becc65e17f0689e9d1d9d35888c20beba958a6ee9b"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_25d_t2_flair",
+      "path": "gan/cyclegan_25d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 45702992,
+      "sha256": "721bbecafa7be2a4516eeacca6b149f527805fb666d27fbe8b5e6e8038b62803"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_3d_t2_flair",
+      "path": "gan/cyclegan_3d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 94742400,
+      "sha256": "fec5a8f861d4528bdbc4868b55ec9d52c8226c1f10cbd1cc33b9e48d6ad262ed"
+    },
+    {
+      "family": "gan",
+      "experiment": "cyclegan_2d_3dpost_t2_flair",
+      "path": "gan/cyclegan_2d_3dpost_t2_flair/refiner_ema.weights.h5",
+      "size_bytes": 733960,
+      "sha256": "fe34803fd0e52625f0c7df09a26303dd6743866010e1985360e5eada6050f246"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_2d_t2",
+      "path": "gan/cut_2d_t2/generator_ema.weights.h5",
+      "size_bytes": 148703400,
+      "sha256": "198a277d1d5a33f1b08d8162a387466bef10c6bcf66af682dfc10560848f6e5f"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_25d_t2",
+      "path": "gan/cut_25d_t2/generator_ema.weights.h5",
+      "size_bytes": 148728488,
+      "sha256": "6a30811de57057860dee56f12e4c23b4fc6d8c91f18bff9dcc1a5e3dc252973f"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_3d_t2",
+      "path": "gan/cut_3d_t2/generator_ema.weights.h5",
+      "size_bytes": 94698496,
+      "sha256": "6d5809cf4054717f3bfe5fa35d3d958adeecef5a7ab8f97d3356e4de7e94c317"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_2d_3dpost_t2",
+      "path": "gan/cut_2d_3dpost_t2/refiner_ema.weights.h5",
+      "size_bytes": 731144,
+      "sha256": "a39304d52f887fb850f5d936b85457c1452cba4630fd82d9a4e17823b6b06a9a"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_2d_t2_flair",
+      "path": "gan/cut_2d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 148705704,
+      "sha256": "c03ab2cce57902e45b14f445d7251245c652d3856a1712a8b07fee4aff7726c7"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_25d_t2_flair",
+      "path": "gan/cut_25d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 148730792,
+      "sha256": "9818639ac83e3d495703a318c7612b1c48a7bf928baf41b3a4a398c99ad53fdd"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_3d_t2_flair",
+      "path": "gan/cut_3d_t2_flair/generator_ema.weights.h5",
+      "size_bytes": 94742400,
+      "sha256": "14d62478084f34985cf566437b7903736a26056d2ac2dfb3272c22cc569be6f3"
+    },
+    {
+      "family": "gan",
+      "experiment": "cut_2d_3dpost_t2_flair",
+      "path": "gan/cut_2d_3dpost_t2_flair/refiner_ema.weights.h5",
+      "size_bytes": 733960,
+      "sha256": "40c029a293b7780640bc20fb8123c9dd85b079f95eb88861806e5a0f8fadef2b"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2d-t2",
+      "path": "resvit/ResViT-2d-t2/p2_best.pth",
+      "size_bytes": 84372118,
+      "sha256": "6db6374015c662a588cd7c084a2abb5c8e208c44cc306de191266b02d3edfa0b"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2d-t2_flair",
+      "path": "resvit/ResViT-2d-t2_flair/p2_best.pth",
+      "size_bytes": 84388758,
+      "sha256": "db6c4e5c5d38fc711760a0b74e8e0380f231ff5c55a320ef051c6eaa2d923c04"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2.5d-t2",
+      "path": "resvit/ResViT-2.5d-t2/p2_best.pth",
+      "size_bytes": 84405398,
+      "sha256": "9d5b31bb77ef8b63e16375ddce853fa84c0407c3c700ecc50cacb6a5c77f50ef"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2.5d-t2_flair",
+      "path": "resvit/ResViT-2.5d-t2_flair/p2_best.pth",
+      "size_bytes": 84422038,
+      "sha256": "d238e73ba777f203ea151fe2b29c8d174e0fd1fd3d9a5c41a5e782a80fd484e4"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2d_3d_refine-t2",
+      "path": "resvit/ResViT-2d_3d_refine-t2/p2_best.pth",
+      "size_bytes": 84372118,
+      "sha256": "e1af759b013df6cd98735d8cda0d48f5f6f5e4ecda7c17803e72b712ddd6ae0c"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-2d_3d_refine-t2_flair",
+      "path": "resvit/ResViT-2d_3d_refine-t2_flair/p2_best.pth",
+      "size_bytes": 84388758,
+      "sha256": "5f43236197359a7d64c3f74869e05c8b62065e46e1f6de7af127c821293f8060"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-full_3d-t2",
+      "path": "resvit/ResViT-full_3d-t2/p2_best.pth",
+      "size_bytes": 360499186,
+      "sha256": "ec7e6c173cca09b711a1fa091e4bfa3bf8b25e8cb42eda04dfb098c1afb3975c"
+    },
+    {
+      "family": "resvit",
+      "experiment": "ResViT-full_3d-t2_flair",
+      "path": "resvit/ResViT-full_3d-t2_flair/p2_best.pth",
+      "size_bytes": 360696754,
+      "sha256": "f1d3d4145d5e05067f66868aa05cbc9e54a118ff07a50bd753ce158adbb7874d"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2_paired",
+      "path": "syndiff/syndiff_us_t2_paired/gen_diffusive_2_40.pth",
+      "size_bytes": 48463530,
+      "sha256": "8e3ce2b7f95c771b0ddb0a56b572bda3ea29a50fc8a2d40cfcbae9eee5826284"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2_paired_25d",
+      "path": "syndiff/syndiff_us_t2_paired_25d/gen_diffusive_2_40.pth",
+      "size_bytes": 48470442,
+      "sha256": "a4bc6247a2d4699addb60dd967108e02a53e0791dacb288a70b626e9145f748c"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2_paired_3d",
+      "path": "syndiff/syndiff_us_t2_paired_3d/gen_diffusive_2_140.pth",
+      "size_bytes": 21773176,
+      "sha256": "698e39f1e4f9de43dab63ebfd4566b06d43136dfb305691a563223a125d8616c"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2_paired_3drefine",
+      "path": "syndiff/syndiff_us_t2_paired_3drefine/gen_diffusive_2_180.pth",
+      "size_bytes": 48463579,
+      "sha256": "1ba62c1be37023e8aa05d603dcbf8098327c812247d142a22217c9949ffd0a70"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2_paired_3drefine",
+      "path": "syndiff/syndiff_us_t2_paired_3drefine/refiner_20.pth",
+      "size_bytes": 866402,
+      "sha256": "6b96ac712dc22a9a98f4dcc143ebb1e580d729f44b77b9129ac0894e82ad7c45"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2flair_paired",
+      "path": "syndiff/syndiff_us_t2flair_paired/gen_diffusive_2_40.pth",
+      "size_bytes": 48466986,
+      "sha256": "f478a4ec31b209a972503c674320b8052e77b013b88805aca83f48f24699d0ae"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2flair_paired_25d",
+      "path": "syndiff/syndiff_us_t2flair_paired_25d/gen_diffusive_2_60.pth",
+      "size_bytes": 48473898,
+      "sha256": "33d1b35edfb4e65d5774c8c3111a513d219670ec2818fd90a3b51829c1f2937a"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2flair_paired_3d",
+      "path": "syndiff/syndiff_us_t2flair_paired_3d/gen_diffusive_2_100.pth",
+      "size_bytes": 21778360,
+      "sha256": "a9c5edaa0962c15d412baef8a66a226cdcd3ed808186ec14f219f26e298f79ca"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2flair_paired_3drefine",
+      "path": "syndiff/syndiff_us_t2flair_paired_3drefine/gen_diffusive_2_40.pth",
+      "size_bytes": 48466986,
+      "sha256": "f478a4ec31b209a972503c674320b8052e77b013b88805aca83f48f24699d0ae"
+    },
+    {
+      "family": "syndiff",
+      "experiment": "syndiff_us_t2flair_paired_3drefine",
+      "path": "syndiff/syndiff_us_t2flair_paired_3drefine/refiner_20.pth",
+      "size_bytes": 932258,
+      "sha256": "5794ad68f39680326456d871a86102c04d2a4067096c0f6323b4ccc523cc2f66"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/fold_0",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth",
+      "size_bytes": 131949670,
+      "sha256": "3c34dd0f414c552d78508717c27762e919dce8ae8ca3061994184da0b4ea8170"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/fold_1",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_1/checkpoint_best.pth",
+      "size_bytes": 131926118,
+      "sha256": "424b6d6bdea6a329018aaabbe8ade06dfd2c9d8dae9b1036b97d9f29d252435d"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/fold_2",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_2/checkpoint_best.pth",
+      "size_bytes": 131976422,
+      "sha256": "050c0941467641562bc02652d11236e03558a0ac703bdb5b322b4a3b36666464"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/fold_3",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_3/checkpoint_best.pth",
+      "size_bytes": 131979814,
+      "sha256": "d0b792ebe333275cf99e92a99b28799d5332cbb3dd8f75b58d9c646364a35d83"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/fold_4",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_4/checkpoint_best.pth",
+      "size_bytes": 131992614,
+      "sha256": "3e6f6191a57afe67d9fb6d7fd9abf44db032a71c54b2accd271522f0622f8a70"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/dataset.json",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/dataset.json",
+      "size_bytes": 317,
+      "sha256": "4307fa82c46e9336a3be7bcb977d65f2f3709a2292de7c71a268ae19ff1897af"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/plans.json",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/plans.json",
+      "size_bytes": 10189,
+      "sha256": "040261ea8537948eb6684b90d391023c944e2d9a2af5016e5a0cc2a7a7e99514"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset501_T2/dataset_fingerprint.json",
+      "path": "nnunet/Dataset501_T2/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/dataset_fingerprint.json",
+      "size_bytes": 22201,
+      "sha256": "191109231043dda92521c23a819fc26d923c7897db27ceae2fe62632f6b9b6aa"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/fold_0",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_0/checkpoint_best.pth",
+      "size_bytes": 131985382,
+      "sha256": "8da260d91c4d8a05c4391a9a3c8dee9e20bbc2d6c4980a949cf202930e6e1924"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/fold_1",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_1/checkpoint_best.pth",
+      "size_bytes": 131999142,
+      "sha256": "bc4417b901516a11d528a8582516a42a67851caae03fa47071411993de80fdbe"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/fold_2",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_2/checkpoint_best.pth",
+      "size_bytes": 131884518,
+      "sha256": "d5fed7a32b372068e05a4742f68202e6c2e81cf5d3083fa18db7b27b10e9149e"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/fold_3",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_3/checkpoint_best.pth",
+      "size_bytes": 131883686,
+      "sha256": "e21762c9487e6435c09009c7a1188fbb5265cfdfffb75fbe9437764626eba065"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/fold_4",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/fold_4/checkpoint_best.pth",
+      "size_bytes": 132006118,
+      "sha256": "930150d3dc071fecda3a0a3663d07689fff647b9f0beda142f3d0772978fb7ed"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/dataset.json",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/dataset.json",
+      "size_bytes": 325,
+      "sha256": "f7f57d97d3f742f339ccfedb738c5e6228e296c2e6c38aca127d8e866136cad9"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/plans.json",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/plans.json",
+      "size_bytes": 10188,
+      "sha256": "54249c688fac6cf930574b836a02e5c555950afc007873a3487c2a917ee757a1"
+    },
+    {
+      "family": "nnunet",
+      "experiment": "Dataset502_FLAIR/dataset_fingerprint.json",
+      "path": "nnunet/Dataset502_FLAIR/nnUNetTrainer_500epochs__nnUNetPlans__3d_fullres/dataset_fingerprint.json",
+      "size_bytes": 15579,
+      "sha256": "530db617c9fd3935254ca1bce42880044797d4f88e944341272933acfde51d71"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ resvit/eval_resvit_metrics.py) is applied to every method:
            rows at the chosen best epoch. LPIPS taken from those CSVs where present, else from
            synthdiff/results/unified_per_subject_final.csv (3Drefine rows), else flagged.
 
-Outputs (new file names; nothing existing is overwritten) under E:/SINTESIS/evaluacion-final/:
+Outputs (new file names; nothing existing is overwritten) under $IOUS2MR_ROOT/evaluacion-final/:
   rescore_methods_persubject.csv, rescore_methods_summary.csv,
   rescore_methods_rankings_t2.csv, rescore_methods_rankings_flair.csv,
   rescore_wilcoxon.csv, master_benchmark_table.csv (+ _flair),
