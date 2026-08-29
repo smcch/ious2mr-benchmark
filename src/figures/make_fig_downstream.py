@@ -33,6 +33,11 @@ ASSETS = os.path.join(BASE, "paper_assets")
 OUTDIR = os.path.join(ASSETS, "figures_journal_v2")
 MANUS = os.path.join(BASE, "latex_manuscript", "us_sintesis", "figures")
 
+# Training-free floor: the same frozen segmentation model applied to the raw co-registered
+# ioUS volume (src/downstream/floor_baseline.py). Only Seg-T2 has one, because the floor is
+# the ultrasound itself and there is no FLAIR-specific equivalent.
+FLOOR_DICE = {"T2": 0.251}
+
 FAM_STYLE = {  # colour, marker  (matches the previous figure's language)
     "Pix2Pix": ("#4477aa", "o"),
     "SwinPix2Pix": ("#55a868", "s"),
@@ -191,6 +196,14 @@ def fig_downstream():
         ax.text(real - 0.006, len(sel) - 0.45, f"real {mod}w ({real:.2f})" if mod == "T2"
                 else f"real FLAIR ({real:.2f})",
                 rotation=90, va="top", ha="right", fontsize=10.5, color="0.35")
+        floor = FLOOR_DICE.get(mod)
+        if floor:
+            # the floor line crosses every bar, so its label goes in the empty band
+            # below the last bar rather than inside the plotted area
+            ax.axvline(floor, color="#b03a2e", ls="-.", lw=1.4, zorder=4)
+            ax.set_ylim(-1.05, len(sel) - 0.35)
+            ax.text(floor + 0.008, -0.85, f"raw ioUS, no synthesis ({floor:.2f})",
+                    va="center", ha="left", fontsize=10.5, color="#b03a2e")
         ax.set_yticks(list(y))
         ax.set_yticklabels(labels, fontsize=11.5)
         ax.set_xlim(0, real * 1.13)
