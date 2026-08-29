@@ -14,12 +14,12 @@ weights archive go public. Ordered by what blocks publication.
       Nothing of this was copied here (the assembly script blocks those paths and `.gitignore`
       denies them), but **never publish, zip or share that tree as-is**, and consider whether
       those files should exist at all in their current form.
-- [ ] Decide whether the external-pilot **code** is published. It is currently *not* included:
-      de-identifying it is not a rename, because the sweep labels are not one-per-patient
-      (`BRA-1`/`BRA-2` are two sweeps of the same subject), and the working notes contain a
-      label↔patient crosswalk and per-patient tumour volumes. `docs/external_pilot.md`
-      documents the data contract so the analysis can be repeated. **If you keep it out, soften
-      the paper's sentence that says the external code is included.**
+- [x] **External-pilot code: excluded, decided.** Nothing from that cohort ships — no data, no
+      per-sweep artefacts, no scripts carrying its label scheme (the `BRA-*` labels are not
+      one-per-patient, so they would leak the patient↔sweep crosswalk).
+      `docs/external_pilot.md` documents the data organisation and protocol so the analysis
+      can be repeated on another cohort, and the manuscript's availability statement was
+      reworded to match.
 
 ## 📄 Placeholders to fill
 
