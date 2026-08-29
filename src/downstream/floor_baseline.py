@@ -42,6 +42,10 @@ OUT = RESULTS / "downstream" / "floor_baseline.csv"
 FLOORS = ["FLOOR_US", "FLOOR_US_HISTM"]
 TUMOUR, CAVITY = 1, 2
 
+# Two SynDiff variants were run outside the 6 x 4 x 2 factorial grid and are excluded from
+# any count phrased "N of the 48 configurations"; both clear the floor comfortably.
+OFF_GRID = {"SynDiff-cascade-T2", "SynDiff-joint-T2"}
+
 
 def gt_path(study: str) -> Path | None:
     for name in (f"{study}-mri-segmentation.nii.gz", f"{study}-mir-segmentation.nii.gz"):
@@ -99,13 +103,19 @@ def score_floor(name: str):
 
 
 def published_reference():
-    """Real-T2w ceiling and the leading syntheses, from the released per-study table."""
-    per = defaultdict(list)
+    """Real-T2w ceiling and every synthesis, from the released per-study table.
+
+    Restricted to the studies the real-T2w reference covers, so that a configuration is not
+    credited for being evaluated on an easier subset.
+    """
+    per = defaultdict(dict)
     for r in csv.DictReader(open(PER_STUDY, newline="", encoding="utf-8")):
         if r["class"] != "lesion" or r["dice"] in ("", "nan"):
             continue
-        per[r["set"]].append(float(r["dice"]))
-    return {k: st.mean(v) for k, v in per.items() if len(v) >= 25}
+        per[r["set"]][r["study"]] = float(r["dice"])
+    base = set(per["REAL_T2"])
+    return {k: st.mean(d[s] for s in d if s in base)
+            for k, d in per.items() if k not in OFF_GRID and (set(d) & base)}
 
 
 def main() -> int:
