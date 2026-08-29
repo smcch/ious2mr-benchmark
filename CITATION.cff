@@ -29,7 +29,7 @@ authors:
     affiliation: >-
       Department of Neurosurgery, Río Hortega University Hospital,
       Valladolid, Spain
-repository-code: 'https://github.com/[TODO-ORG]/ious2mr-benchmark'
+repository-code: 'https://github.com/smcch/ious2mr-benchmark'
 abstract: >-
   Code, configuration and trained model weights for a controlled
   benchmark of intraoperative ultrasound (ioUS) to MRI synthesis on the

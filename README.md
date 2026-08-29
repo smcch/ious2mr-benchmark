@@ -62,7 +62,7 @@ scripts/            weights download helper, repository provenance
 ## Quick start
 
 ```bash
-git clone https://github.com/[TODO-ORG]/ious2mr-benchmark && cd ious2mr-benchmark
+git clone https://github.com/smcch/ious2mr-benchmark && cd ious2mr-benchmark
 conda env create -f envs/environment-pytorch.yml && conda activate ious2mr-torch
 
 export IOUS2MR_ROOT=/path/to/working/tree     # where the pipeline reads/writes

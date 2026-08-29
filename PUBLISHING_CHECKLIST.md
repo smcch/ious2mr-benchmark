@@ -23,7 +23,7 @@ weights archive go public. Ordered by what blocks publication.
 
 ## 📄 Placeholders to fill
 
-- [ ] `[TODO-ORG]` → your GitHub organisation/user, in `README.md` and `CITATION.cff`.
+- [x] GitHub repository created (private): https://github.com/smcch/ious2mr-benchmark — URLs updated in `README.md` and `CITATION.cff`. Flip to public when the paper is submitted/accepted.
 - [ ] `[TODO-DOI]`, `[TODO-RECORD]` → the Zenodo DOI and record id, in `README.md`,
       `WEIGHTS.md`, `configs/weights_manifest.json` (`base_url`) and the paper.
 - [ ] `[TODO — journal]`, publication year and ORCIDs in `CITATION.cff`.
