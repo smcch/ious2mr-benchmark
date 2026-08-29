@@ -73,27 +73,36 @@ def main():
     for x, h, c in zip(enc_x, heights, chans):
         box(ax, x, ymid - h / 2, 0.026, h, "", fc=TEAL, ec=TEALD)
         ax.text(x + 0.013, ymid - h / 2 - 0.022, c, ha="center", va="top", fontsize=11)
-    box(ax, 0.366, ymid - 0.077, 0.080, 0.13, "residual\nbottleneck", fc=TEALD, ec=TEALD,
-        fs=11, tc="white")
-    dec_x = [0.458, 0.501, 0.544, 0.587]
-    for x, h, c in zip(dec_x, heights[3::-1], chans[3::-1]):
+    box(ax, 0.362, ymid - 0.077, 0.076, 0.13, "residual\nbottleneck", fc=TEALD, ec=TEALD,
+        fs=10.5, tc="white")
+    dec_x = [0.450, 0.486, 0.522, 0.558, 0.594]
+    dec_h = [0.11, 0.13, 0.24, 0.35, 0.46]
+    dec_c = ["512", "512", "256", "128", "64"]
+    for x, h, c in zip(dec_x, dec_h, dec_c):
         box(ax, x, ymid - h / 2, 0.026, h, "", fc=TEAL, ec=TEALD)
         ax.text(x + 0.013, ymid - h / 2 - 0.022, c, ha="center", va="top", fontsize=11)
-    # skip connections: rectilinear path broken by an AG (attention gate) chip that sits
-    # on the horizontal run, near the decoder end; the path never touches the chip text.
-    for (xe, xd, h) in ((0.168, 0.600, 0.46), (0.211, 0.557, 0.35), (0.254, 0.514, 0.24),
-                        (0.297, 0.471, 0.13)):
-        y = ymid + h / 2 + 0.045
-        cx0 = xd - 0.058  # chip left edge
+    # skip connections: one per encoder/decoder pair (five, Sec. 2.4.1), each a
+    # rectilinear path broken by an AG (attention gate) chip on the horizontal run.
+    # Chips are x-disjoint, so the evenly spaced lanes never cross a chip.
+    skips = (  # (enc riser x, dec riser x, lane offset above ymid, bar height)
+        (0.168, 0.607, 0.275, 0.46),
+        (0.211, 0.571, 0.227, 0.35),
+        (0.254, 0.535, 0.179, 0.24),
+        (0.297, 0.499, 0.131, 0.13),
+        (0.340, 0.463, 0.083, 0.11),
+    )
+    for (xe, xd, dy, h) in skips:
+        y = ymid + dy
+        cx0 = xd - 0.056  # chip left edge
         arr(ax, xe, ymid + h / 2 + 0.005, cx0 - 0.006, y, lw=1.0, color="#8f8f8f",
             con="angle,angleA=90,angleB=0,rad=0", ms=10)
-        box(ax, cx0, y - 0.024, 0.036, 0.048, "AG", fc="#d9ead3", ec="#6aa84f",
+        box(ax, cx0, y - 0.024, 0.032, 0.048, "AG", fc="#d9ead3", ec="#6aa84f",
             lw=1.0, fs=11)
-        arr(ax, cx0 + 0.041, y, xd, ymid + h / 2 + 0.007, lw=1.0, color="#8f8f8f",
+        arr(ax, cx0 + 0.037, y, xd, ymid + h / 2 + 0.007, lw=1.0, color="#8f8f8f",
             con="angle,angleA=0,angleB=90,rad=0", ms=10)
     box(ax, 0.632, ymid - 0.14, 0.106, 0.28,
         "synthetic T2w\n(tanh)\n+ FLAIR head\n(multi-task)", fc=BLUE, ec=BLUED, fs=12)
-    arr(ax, 0.618, ymid, 0.626, ymid, ms=10)
+    arr(ax, 0.6235, ymid, 0.6295, ymid, ms=9)
     # notes (top band, clear of the skip chips)
     box(ax, 0.220, 0.750, 0.215, 0.13, "PatchNCE projection heads\n(CUT only)",
         fc="white", ec="#888888", ls="--", fs=11)
@@ -136,9 +145,12 @@ def main():
         bx += 0.030
     ax.text(0.5345, 0.245, "ART blocks 1-9 (residual; independent weights)",
             ha="center", va="center", fontsize=11)
-    box(ax, 0.375, 0.72, 0.30, 0.16,
-        "transformer branch (windowed attention)\n+ 1 $\\times$ 1 conv aggregation",
-        fc="#fdeee9", ec=CORALD, fs=11.5)
+    for xc, lab in ((0.185, "$n_{gf}$"), (0.281, "$2\\,n_{gf}$"), (0.355, "$4\\,n_{gf}$")):
+        ax.text(xc, 0.245, lab, ha="center", va="center", fontsize=11)
+    box(ax, 0.345, 0.72, 0.35, 0.16,
+        "parallel ViT branch: global self-attention (8 heads)\n"
+        "concat + 1 $\\times$ 1 conv aggregation",
+        fc="#fdeee9", ec=CORALD, fs=11)
     arr(ax, 0.5045, 0.552, 0.505, 0.714, con="arc3,rad=-0.05")
     arr(ax, 0.5345, 0.552, 0.558, 0.714, con="arc3,rad=0.08")
     box(ax, 0.687, ym - 0.13, 0.054, 0.26, "ConvT\n$\\times$2", fc=TEAL, ec=TEALD, fs=11)
@@ -183,9 +195,13 @@ def main():
         arr(ax, cx, ym - 0.157, cx, ym + 0.005, lw=1.0, color="#999999")
     ax.plot([0.130, chain_x[-1]], [ym - 0.16, ym - 0.16], color="#999999", lw=1.0,
             zorder=1)
-    ax.text(0.47, 0.19,
-            "re-noising between steps:  $x_t \\sim q\\,(x_t \\mid \\hat{x}_0,\\, x_{t+1})$"
-            "  $\\cdot$  generator: NCSNpp time-conditional U-Net",
+    ax.text(0.47, 0.225,
+            "each step:  $\\hat{x}_0 = G_\\theta(x_{t+1},\\, c,\\, t,\\, z)$, "
+            " $z \\sim \\mathcal{N}(0, I)$   $\\cdot$   generator: NCSNpp "
+            "time-conditional U-Net",
+            ha="center", fontsize=11)
+    ax.text(0.47, 0.155,
+            "re-noising between steps:  $x_t \\sim q\\,(x_t \\mid \\hat{x}_0,\\, x_{t+1})$",
             ha="center", fontsize=11)
     box(ax, 0.790, ym - 0.05, 0.192, 0.26,
         "time-conditional\nBigGAN-style D\nnon-saturating GAN loss\n"

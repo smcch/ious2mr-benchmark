@@ -65,7 +65,7 @@ def arrow(ax, x0, y0, x1, y1, lw=1.6, color="#666666", style="-|>", shrink=0.0,
 
 
 def main():
-    fig = plt.figure(figsize=(12.3, 11.0))
+    fig = plt.figure(figsize=(12.3, 10.2))
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
@@ -99,7 +99,7 @@ def main():
     arrow(ax, 0.5, 0.857, 0.5, 0.840)
 
     # ---------------- band 2 : pre-processing ----------------
-    ax.text(0.015, 0.824, "Pre-processing (Section 2.2)", fontsize=14,
+    ax.text(0.015, 0.824, "Pre-processing", fontsize=14,
             style="italic")
     steps = [
         ("DICOM $\\rightarrow$ NIfTI", 0.015, 0.118),
@@ -142,11 +142,10 @@ def main():
     arrow(ax, 0.323, 0.600, 0.391, 0.600, lw=2.0)
 
     # family boxes
-    ax.text(0.44, 0.700, "Six generators, three paradigms (Section 2.4)",
+    ax.text(0.44, 0.700, "Six generators, three paradigms",
             fontsize=14, style="italic")
     box(ax, 0.400, 0.548, 0.162, 0.130,
-        "Pix2Pix $\\cdot$ SwinPix2Pix\nCycleGAN $\\cdot$ CUT\n"
-        "attention-gated U-Net /\nResNet + PatchGAN",
+        "Pix2Pix $\\cdot$ SwinPix2Pix\nCycleGAN $\\cdot$ CUT",
         fc="#e8eef6", ec=C_GAN, lw=1.6, fs=11.5, title="GAN baselines")
     box(ax, 0.6085, 0.548, 0.167, 0.130,
         "transformer-augmented\nresidual generator\n(9 ART blocks)",
@@ -165,43 +164,32 @@ def main():
     arrow(ax, 0.6925, 0.402, 0.6925, 0.379, lw=1.8)
     box(ax, 0.6125, 0.324, 0.16, 0.046, "48 experiments", fc="#3b4a5f", ec="#3b4a5f",
         fs=14, weight="bold", tc="white")
-    arrow(ax, 0.6925, 0.314, 0.6925, 0.290, lw=1.8)
+    arrow(ax, 0.6925, 0.314, 0.6925, 0.248, lw=1.8)
     box(ax, 0.015, 0.324, 0.302, 0.048,
         "real MR of the same 30 test studies (ceiling),\nraw ioUS (floor)",
         fc="#fbfbfb", ec="#888888", lw=1.1, fs=11, ls=(0, (4, 3)))
-    arrow(ax, 0.166, 0.314, 0.166, 0.290, lw=1.8)
+    arrow(ax, 0.166, 0.314, 0.166, 0.248, lw=1.8)
 
     # ---------------- band 4 : evaluation ----------------
-    ax.text(0.015, 0.258, "Evaluation on the held-out test set (Sections 2.6-2.7)",
+    ax.text(0.015, 0.218, "Evaluation on the held-out test set",
             fontsize=14, style="italic")
-    box(ax, 0.015, 0.108, 0.270, 0.130,
+    box(ax, 0.015, 0.048, 0.270, 0.140,
         "SSIM $\\cdot$ PSNR $\\cdot$ MAE $\\cdot$ LPIPS\n"
         "global (foreground) and ROI-restricted:\nlesion / tumour / cavity,\n"
         "0 mm strict + 5 mm margin",
         fs=11.5, title="Image fidelity")
-    box(ax, 0.3245, 0.108, 0.3594, 0.130,
+    box(ax, 0.3245, 0.048, 0.3594, 0.140,
         "frozen nnU-Net: Seg-T2 ($n=29$) $\\cdot$ Seg-FLAIR ($n=19$)\n"
         "primary endpoint: lesion = tumour $\\cup$ cavity\n"
-        "retention vs real-MR ceiling (Dice 0.662)\n"
-        "training-free floor: raw ioUS (Dice 0.251)",
+        "retention vs real-MR ceiling\n"
+        "training-free floor: raw ioUS",
         fs=11.5, title="Downstream segmentation utility")
-    box(ax, 0.7235, 0.108, 0.262, 0.130,
+    box(ax, 0.7235, 0.048, 0.262, 0.140,
         "3 patients $\\cdot$ 9 pre-resection sweeps\n"
-        "second centre, different scanner\n"
+        "external centre, different scanner\n"
         "all 48 configurations applied frozen\n"
         "ranking transfer + sweep stability",
         fs=11.5, title="External pilot (inference only)")
-
-    # ---------------- band 5 : statistics strip ----------------
-    box(ax, 0.015, 0.034, 0.97, 0.050,
-        "statistics:  patient-level bootstrap (20 000 resamples)  $\\cdot$  paired "
-        "pre/post Wilcoxon  $\\cdot$\nHolm correction within test families  $\\cdot$  "
-        "family-adjusted fidelity-utility associations",
-        fc="#efefef", ec="#999999", fs=12)
-    ax.text(0.5, 0.010,
-            "code, weights, splits, reference segmentations and per-study metric tables "
-            "released openly (Section: Code and data availability)",
-            ha="center", fontsize=11, style="italic", color="#444444")
 
     for ext, dpi in ((".jpg", 300), (".tiff", 300)):
         fig.savefig(os.path.join(OUTDIR, "Fig_overview" + ext), dpi=dpi,
