@@ -14,10 +14,6 @@ Inputs: results_paper_protocol/seg_results_{T2,FLAIR}.csv, seg_metrics_T2_per_st
 paper_assets/all_experiments_metrics.csv (SynDiff-dual fixed), ReMIND_subset_diagnoses.csv.
 Originals backed up to figures_journal_v2/superseded_20260828/.
 """
-import os as _os, sys as _sys
-_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..'))
-from common.paths import PROJECT_ROOT, DATA_ROOT, CKPT_ROOT, EXTERNAL_ROOT  # noqa: E402
-import os  # noqa: E402,F811
 import csv
 import math
 import os
@@ -31,7 +27,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from scipy.stats import t as tdist
 
-BASE = str(PROJECT_ROOT)
+BASE = r"$IOUS2MR_ROOT"
 RES = os.path.join(BASE, "downstream_seg", "results_paper_protocol")
 ASSETS = os.path.join(BASE, "paper_assets")
 OUTDIR = os.path.join(ASSETS, "figures_journal_v2")
@@ -129,6 +125,27 @@ def pearson_t(xs, ys):
     return r, 2 * tdist.sf(abs(tv), n - 2)
 
 
+def within_family_r(points, metric):
+    """Partial correlation of `metric` with utility after removing family means."""
+    by_fam = defaultdict(list)
+    for vals, y, fam in points:
+        by_fam[fam].append((vals[metric], y))
+    rx, ry = [], []
+    for fam, vs in by_fam.items():
+        mx = st.mean(v[0] for v in vs)
+        my = st.mean(v[1] for v in vs)
+        rx += [v[0] - mx for v in vs]
+        ry += [v[1] - my for v in vs]
+    n, k = len(rx), len(by_fam)
+    mx, my = st.mean(rx), st.mean(ry)
+    num = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+    den = math.sqrt(sum((a - mx) ** 2 for a in rx) * sum((b - my) ** 2 for b in ry))
+    r = num / den
+    df = n - k - 1
+    tv = r * math.sqrt(df / max(1e-12, 1 - r * r))
+    return r, float(2 * tdist.sf(abs(tv), df))
+
+
 def spearman_t(xs, ys):
     def rk(v):
         order = sorted(range(len(v)), key=lambda i: v[i])
@@ -219,19 +236,37 @@ def fig_downstream():
             ax.scatter(vals[m], yv, color=c, marker=mk,
                        s=120 if mk == "*" else 70, alpha=0.9,
                        edgecolor="white", linewidth=0.6, zorder=3)
-        a, b = ((sum((x - st.mean(xs)) * (y - st.mean(ys)) for x, y in zip(xs, ys))
-                 / sum((x - st.mean(xs)) ** 2 for x in xs)), 0)
-        b = st.mean(ys) - a * st.mean(xs)
+        # Pooled fit, drawn only over the range where experiments actually exist, plus one
+        # thin within-family fit per family: the pooled slope is a between-paradigm contrast
+        # and the two paradigms occupy disjoint ranges on some metrics.
+        def fit(px, py):
+            mx, my = st.mean(px), st.mean(py)
+            sa = sum((a_ - mx) * (b_ - my) for a_, b_ in zip(px, py))
+            sb = sum((a_ - mx) ** 2 for a_ in px)
+            a_ = sa / sb if sb else 0.0
+            return a_, my - a_ * mx
+
+        a, b = fit(xs, ys)
         xx = [min(xs), max(xs)]
-        ax.plot(xx, [a * x + b for x in xx], color="grey", ls="--", lw=1.2, zorder=2)
+        ax.plot(xx, [a * x + b for x in xx], color="grey", ls="--", lw=1.4, zorder=2,
+                label="pooled")
+        for fam in sorted({p[2] for p in pts}):
+            fx = [p[0][m] for p in pts if p[2] == fam]
+            fy = [p[1] for p in pts if p[2] == fam]
+            if len(fx) < 3 or max(fx) == min(fx):
+                continue
+            fa, fb = fit(fx, fy)
+            ax.plot([min(fx), max(fx)], [fa * min(fx) + fb, fa * max(fx) + fb],
+                    color=FAM_STYLE[fam][0], ls="-", lw=1.1, alpha=0.65, zorder=2)
         r_, p_ = pearson_t(xs, ys)
-        rho, prho = spearman_t(xs, ys)
+        rw, pw = within_family_r(pts, m)
         ptxt = "$p$ < 0.001" if p_ < 0.001 else f"$p$ = {p_:.3f}"
-        prtxt = "$p$ < 0.001" if prho < 0.001 else f"$p$ = {prho:.3f}"
+        pwtxt = "$p$ < 0.001" if pw < 0.001 else f"$p$ = {pw:.3f}"
         loc = (0.97, 0.97, "right", "top") if m in ("lpips", "mae") else (0.03, 0.03, "left", "bottom")
         ax.text(loc[0], loc[1],
-                f"Pearson r = {r_:+.2f} ({ptxt})\nSpearman $\\rho$ = {rho:+.2f} ({prtxt})",
-                transform=ax.transAxes, ha=loc[2], va=loc[3], fontsize=11,
+                f"pooled r = {r_:+.2f} ({ptxt})\n"
+                f"within-family r = {rw:+.2f} ({pwtxt})",
+                transform=ax.transAxes, ha=loc[2], va=loc[3], fontsize=10.5,
                 bbox=dict(boxstyle="round,pad=0.35", fc="white", ec="grey", alpha=0.92))
         ax.set_xlabel(xl)
         if k % 2 == 0:
