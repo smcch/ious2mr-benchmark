@@ -1,0 +1,28 @@
+analysis,key,estimate,ci_low,ci_high,n
+retention_ci,ResViT 2D + 3D-refine,0.614,0.537,0.704,29
+retention_ci,ResViT 2.5D,0.568,0.474,0.66,29
+retention_ci,SynDiff 2D,0.557,0.441,0.679,29
+retention_ci,ResViT Full-3D,0.542,0.425,0.652,29
+retention_ci,SynDiff 2D + 3D-refine,0.532,0.461,0.604,29
+retention_ci,ResViT 2D,0.532,0.451,0.619,29
+retention_ci,SynDiff 2.5D,0.528,0.398,0.657,29
+retention_ci,SynDiff 2D + 3D-refine (dual),0.518,0.394,0.636,29
+reoperation_subgroup,Pix2Pix 2D + 3D-refine/mae,0.0445,0.0712,,16
+reoperation_subgroup,CycleGAN 2D + 3D-refine/psnr,0.0364,0.0712,,16
+reoperation_subgroup,ResViT 2.5D/lpips,0.0403,0.0311,,16
+paired_phase,Pix2Pix 2D + 3D-refine/ssim,0.041,0.0004,,14
+paired_phase,Pix2Pix 2D + 3D-refine/psnr,-0.6185,0.1937,,14
+paired_phase,SwinPix2Pix 2D + 3D-refine/ssim,0.0396,0.0009,,14
+paired_phase,SwinPix2Pix 2D + 3D-refine/psnr,-0.7903,0.104,,14
+paired_phase,CycleGAN 2D + 3D-refine/ssim,0.0347,0.004,,14
+paired_phase,CycleGAN 2D + 3D-refine/psnr,-0.6424,0.104,,14
+paired_phase,CUT 2D + 3D-refine/ssim,0.04,0.0006,,14
+paired_phase,CUT 2D + 3D-refine/psnr,-0.5304,0.1937,,14
+paired_phase,ResViT 2.5D/ssim,-0.0149,0.4631,,14
+paired_phase,ResViT 2.5D/psnr,-0.7988,0.0166,,14
+paired_phase,ResViT Full-3D/ssim,-0.0145,0.5016,,14
+paired_phase,ResViT Full-3D/psnr,-0.6778,0.0906,,14
+paired_phase,SynDiff 2.5D/ssim,-0.0197,0.3258,,14
+paired_phase,SynDiff 2.5D/psnr,-0.8392,0.0017,,14
+paired_phase,SynDiff 2D + 3D-refine/ssim,-0.0118,0.6257,,14
+paired_phase,SynDiff 2D + 3D-refine/psnr,-0.3358,0.2958,,14
