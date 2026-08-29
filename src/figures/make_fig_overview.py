@@ -119,7 +119,7 @@ def main():
 
     # ---------------- band 3 : examples + families ----------------
     # example 2x2 grid (real data)
-    ax.text(0.015, 0.700, "Paired training data (test subject ReMIND-003)",
+    ax.text(0.015, 0.700, "Paired training data",
             fontsize=14, style="italic")
     ims = [
         slc(os.path.join(DATA, "MR-T2", "ReMIND-003-pre-mri.nii.gz")),
