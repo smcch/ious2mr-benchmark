@@ -11,7 +11,7 @@ protocol.
 | | |
 |---|---|
 | **Paper** | *A Systematic Benchmark of Intraoperative Ultrasound-to-MR Synthesis for Brain Tumour Surgery* (under review) |
-| **Weights** | Zenodo [10.5281/zenodo.22213625](https://doi.org/10.5281/zenodo.22213625) · `python scripts/fetch_weights.py --list` |
+| **Weights** | Zenodo [10.5281/zenodo.22213625](https://doi.org/10.5281/zenodo.22213625) — one 4.55 GiB archive · `python scripts/fetch_weights.py --download` then `--verify` |
 | **Data** | ReMIND (public, CC BY 4.0) — see [`DATA.md`](DATA.md) |
 | **Licence** | Apache-2.0, *except* the diffusion family — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) |
 

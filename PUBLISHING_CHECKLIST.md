@@ -36,13 +36,17 @@ weights archive go public. Ordered by what blocks publication.
 - [ ] **Open the Zenodo files at submission.** Both records are published with *restricted*
       files, while the manuscript states that the weights and the segmentations are openly
       available. Set both to Open Access before the paper is sent out.
-- [ ] **Upload the weights as the 66 individual files, not as one archive.** The record
-      currently holds a single 4.5 GB `.rar`, but `scripts/fetch_weights.py` builds one URL
-      per file from `base_url` (`.../records/22213626/files/gan/<experiment>/<file>`), so
-      `--family` / `--experiment` and the SHA-256 verification only work once the files are
-      uploaded with their directory structure. The record's own description also promises
-      per-family download. Same for the segmentations record (single `.rar`, and its listed
-      size of 1.3 MB does not match the ~297 label maps it should contain — check the upload).
+- [x] Single-archive release kept (author's decision, 2026-09-03). `fetch_weights.py` was
+      rewritten accordingly: `--download` fetches `2-zenodo-pesos.rar`, extraction is manual
+      (unrar / 7z / bsdtar) and `--verify` checks the extracted tree against the 66 SHA-256
+      checksums; `--family` and `--experiment` now filter listing and verification, not
+      downloading. `WEIGHTS.md` and `README.md` match.
+- [ ] **Fix the weights record's description on Zenodo**: it still says
+      `fetch_weights.py --all` / `--family gan` download subsets, which a single archive
+      cannot do. Replacement text is in `docs/zenodo_record_text.md`.
+- [x] Segmentations record verified: 297 label maps really do total **1.27 MB**
+      (mean 4.2 KB per sparse mask), so the 1.3 MB shown on Zenodo is correct. The "297 MB"
+      in the old release notes came from `du` rounding to the disk's allocation unit.
 
 ## 📦 Weights archive
 

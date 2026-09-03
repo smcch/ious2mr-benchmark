@@ -5,15 +5,24 @@ single archived record:
 
 > **Zenodo record: [10.5281/zenodo.22213625](https://doi.org/10.5281/zenodo.22213625)**
 
-Download them with the helper, which verifies checksums and lays the files out where the
-pipeline expects them:
+The record holds **one RAR archive**, `2-zenodo-pesos.rar`, containing all 66 files, so the
+weights are downloaded in one piece and extracted with an external tool; individual files and
+families cannot be fetched separately. The helper downloads the archive and then verifies the
+extracted tree against the SHA-256 checksums in `configs/weights_manifest.json`:
 
 ```bash
-python scripts/fetch_weights.py --list          # inventory and sizes
-python scripts/fetch_weights.py --all           # 4.55 GiB
-python scripts/fetch_weights.py --family resvit # a single family
+python scripts/fetch_weights.py --list            # inventory, sizes and checksums
+python scripts/fetch_weights.py --download        # the archive, 4.55 GiB
+unrar x weights/2-zenodo-pesos.rar weights/       # or: 7z x ... -oweights/  |  bsdtar -xf ... -C weights/
+python scripts/fetch_weights.py --verify          # every file, or --family resvit
 export IOUS2MR_CKPT=$PWD/weights
 ```
+
+Extract so that the family directories sit directly under the weights root
+(`weights/gan/`, `weights/resvit/`, `weights/syndiff/`, `weights/nnunet/`); `--verify` says
+what it found and where, so a wrong nesting level is immediately visible. Until the record's
+files are switched to open access, `--download` will report an HTTP error and point you at the
+DOI landing page for a manual download.
 
 ## Contents
 
