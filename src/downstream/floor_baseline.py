@@ -103,10 +103,13 @@ def score_floor(name: str):
 
 
 def published_reference():
-    """Real-T2w ceiling and every synthesis, from the released per-study table.
+    """Per-study lesion Dice of the real-T2w reference and of every configuration.
 
-    Restricted to the studies the real-T2w reference covers, so that a configuration is not
-    credited for being evaluated on an easier subset.
+    Returned per study, not averaged: single-target configurations are scored on 29 studies
+    and multi-task ones on a 19-study subset, so every comparison below is made on the cohort
+    the two inputs share.  Averaging first and comparing the means would contrast a
+    configuration's 19 easier studies with a baseline's 29 (the null control is 0.281 on that
+    subset against 0.251 over the full cohort).
     """
     per = defaultdict(dict)
     for r in csv.DictReader(open(PER_STUDY, newline="", encoding="utf-8")):
@@ -114,7 +117,7 @@ def published_reference():
             continue
         per[r["set"]][r["study"]] = float(r["dice"])
     base = set(per["REAL_T2"])
-    return {k: st.mean(d[s] for s in d if s in base)
+    return {k: {s: v for s, v in d.items() if s in base}
             for k, d in per.items() if k not in OFF_GRID and (set(d) & base)}
 
 
@@ -128,12 +131,13 @@ def main() -> int:
     if not rows:
         return 1
 
-    ref = published_reference()
-    ceiling = ref.get("REAL_T2", float("nan"))
-    leader = max((v for k, v in ref.items() if not k.startswith(("REAL_", "FLOOR_"))),
-                 default=float("nan"))
-    leader_name = max((k for k in ref if not k.startswith(("REAL_", "FLOOR_"))),
-                      key=lambda k: ref[k], default="?")
+    ref = published_reference()          # per study
+    real = ref["REAL_T2"]
+    ceiling = st.mean(real.values())
+    configs = {k: v for k, v in ref.items() if not k.startswith(("REAL_", "FLOOR_"))}
+    means = {k: st.mean(v.values()) for k, v in configs.items()}
+    leader_name = max(means, key=means.get)
+    leader = means[leader_name]
 
     print("=" * 88)
     print("FLOOR BASELINES ON THE PRIMARY LESION ENDPOINT (frozen Seg-T2, same grid)")
@@ -153,13 +157,21 @@ def main() -> int:
     print(f"   {leader_name[:22]:22s} {'':3s} {leader:7.3f} {'':7s} {'':7s} "
           f"{100*leader/ceiling:12.1f}%   (best synthesis)")
 
-    floor = max(summary.values()) if summary else float("nan")
-    print(f"\n   Synthesis clears the best training-free floor by "
+    floor_name = max(summary, key=summary.get) if summary else None
+    floor = summary[floor_name] if summary else float("nan")
+    print(f"\n   Synthesis clears the strongest null control by "
           f"{leader - floor:+.3f} Dice ({100*(leader-floor)/ceiling:+.1f} points of the ceiling).")
-    n_above = sum(1 for k, v in ref.items()
-                  if not k.startswith(("REAL_", "FLOOR_")) and v > floor)
-    n_tot = sum(1 for k in ref if not k.startswith(("REAL_", "FLOOR_")))
-    print(f"   {n_above} of {n_tot} configurations exceed it.")
+    # cohort-matched count: each configuration against the control on the studies they share
+    per_floor = defaultdict(dict)
+    for r in rows:
+        if r["cls"] == "lesion" and r["gt_present"] == 1 and r["dice"] == r["dice"]:
+            per_floor[r["set"]][r["study"]] = r["dice"]
+    for fname, fd in per_floor.items():
+        below = [k for k, v in configs.items()
+                 if st.mean(v[s] for s in (v.keys() & fd.keys()))
+                 < st.mean(fd[s] for s in (v.keys() & fd.keys()))]
+        print(f"   {len(below)} of {len(configs)} configurations fall below {fname} "
+              f"(cohort-matched); {len(configs) - len(below)} clear it.")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with OUT.open("w", newline="", encoding="utf-8") as fh:

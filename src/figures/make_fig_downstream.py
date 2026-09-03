@@ -33,10 +33,12 @@ ASSETS = os.path.join(BASE, "paper_assets")
 OUTDIR = os.path.join(ASSETS, "figures_journal_v2")
 MANUS = os.path.join(BASE, "latex_manuscript", "us_sintesis", "figures")
 
-# Training-free floor: the same frozen segmentation model applied to the raw co-registered
-# ioUS volume (src/downstream/floor_baseline.py). Only Seg-T2 has one, because the floor is
-# the ultrasound itself and there is no FLAIR-specific equivalent.
+# Null control: the same frozen segmentation model applied to the raw co-registered ioUS
+# volume (src/downstream/floor_baseline.py).  Direct-ioUS reference: an nnU-Net trained on
+# the ioUS volumes under the identical protocol (src/downstream/score_seg_us.py).  Only
+# Seg-T2 has both, because the input is the ultrasound and there is no FLAIR equivalent.
 FLOOR_DICE = {"T2": 0.251}
+SEG_US_DICE = {"T2": 0.401}
 
 FAM_STYLE = {  # colour, marker  (matches the previous figure's language)
     "Pix2Pix": ("#4477aa", "o"),
@@ -197,13 +199,18 @@ def fig_downstream():
                 else f"real FLAIR ({real:.2f})",
                 rotation=90, va="top", ha="right", fontsize=10.5, color="0.35")
         floor = FLOOR_DICE.get(mod)
+        segus = SEG_US_DICE.get(mod)
         if floor:
-            # the floor line crosses every bar, so its label goes in the empty band
+            # both reference lines cross every bar, so their labels go in the empty band
             # below the last bar rather than inside the plotted area
             ax.axvline(floor, color="#b03a2e", ls="-.", lw=1.4, zorder=4)
-            ax.set_ylim(-1.05, len(sel) - 0.35)
-            ax.text(floor + 0.008, -0.85, f"raw ioUS, no synthesis ({floor:.2f})",
+            ax.set_ylim(-1.55, len(sel) - 0.35)
+            ax.text(floor + 0.008, -0.75, f"raw ioUS, no synthesis ({floor:.2f})",
                     va="center", ha="left", fontsize=10.5, color="#b03a2e")
+        if segus:
+            ax.axvline(segus, color="#1f6f4a", ls=(0, (4, 2)), lw=1.4, zorder=4)
+            ax.text(segus + 0.008, -1.30, f"segmentation trained on ioUS ({segus:.2f})",
+                    va="center", ha="left", fontsize=10.5, color="#1f6f4a")
         ax.set_yticks(list(y))
         ax.set_yticklabels(labels, fontsize=11.5)
         ax.set_xlim(0, real * 1.13)
