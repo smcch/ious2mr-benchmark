@@ -24,10 +24,25 @@ weights archive go public. Ordered by what blocks publication.
 ## 📄 Placeholders to fill
 
 - [x] GitHub repository created (private): https://github.com/smcch/ious2mr-benchmark — URLs updated in `README.md` and `CITATION.cff`. Flip to public when the paper is submitted/accepted.
-- [ ] `[TODO-DOI]`, `[TODO-RECORD]` → the Zenodo DOI and record id, in `README.md`,
-      `WEIGHTS.md`, `configs/weights_manifest.json` (`base_url`) and the paper.
-- [ ] `[TODO — journal]`, publication year and ORCIDs in `CITATION.cff`.
+- [x] Zenodo DOI and record id → filled in `README.md`, `WEIGHTS.md`,
+      `configs/weights_manifest.json` (`base_url`) and the paper:
+      weights **10.5281/zenodo.22213625** (record 22213626),
+      reference segmentations **10.5281/zenodo.22214974** (record 22214975).
+      The code itself is distributed through GitHub only, with no Zenodo archive or DOI
+      (author's decision, 2026-09-03); the manuscript no longer claims one.
+- [x] `[TODO — journal]` → `Medical Image Analysis` in `CITATION.cff`. ORCIDs and
+      `date-released` still commented out there.
 - [ ] `[IRB-PENDING]` in the manuscript → the external centre's approval number.
+- [ ] **Open the Zenodo files at submission.** Both records are published with *restricted*
+      files, while the manuscript states that the weights and the segmentations are openly
+      available. Set both to Open Access before the paper is sent out.
+- [ ] **Upload the weights as the 66 individual files, not as one archive.** The record
+      currently holds a single 4.5 GB `.rar`, but `scripts/fetch_weights.py` builds one URL
+      per file from `base_url` (`.../records/22213626/files/gan/<experiment>/<file>`), so
+      `--family` / `--experiment` and the SHA-256 verification only work once the files are
+      uploaded with their directory structure. The record's own description also promises
+      per-family download. Same for the segmentations record (single `.rar`, and its listed
+      size of 1.3 MB does not match the ~297 label maps it should contain — check the upload).
 
 ## 📦 Weights archive
 

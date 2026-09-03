@@ -1,6 +1,6 @@
 {
   "description": "Trained weights for the ioUS->MR synthesis benchmark. See WEIGHTS.md; the syndiff family is non-commercial research use only.",
-  "base_url": "https://zenodo.org/records/[TODO-RECORD]/files",
+  "base_url": "https://zenodo.org/records/22213626/files",
   "total_bytes": 4888294900,
   "n_files": 66,
   "files": [

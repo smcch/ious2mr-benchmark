@@ -80,3 +80,10 @@ in `docs/external_pilot.md`.
 The trained generators for all 48 experiments, and the two nnU-Net downstream segmentation
 models, are released separately (they exceed GitHub's file-size limits). See **`WEIGHTS.md`**
 for the archive location, contents and the licence note that applies to the diffusion models.
+
+## Reference segmentations
+
+The 297 manual tumour and resection-cavity label maps created for the downstream
+evaluation (150 on the pre-processed MR grid, 147 on the ultrasound grid) are archived
+separately at Zenodo, [10.5281/zenodo.22214974](https://doi.org/10.5281/zenodo.22214974),
+under the same CC BY 4.0 licence as ReMIND.

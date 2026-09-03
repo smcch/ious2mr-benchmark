@@ -3,7 +3,7 @@
 All trained weights are hosted outside GitHub (they exceed its 100 MB per-file limit) in a
 single archived record:
 
-> **Zenodo record: [TODO — DOI once minted]**
+> **Zenodo record: [10.5281/zenodo.22213625](https://doi.org/10.5281/zenodo.22213625)**
 
 Download them with the helper, which verifies checksums and lays the files out where the
 pipeline expects them:
