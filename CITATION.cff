@@ -19,6 +19,16 @@ authors:
       Department of Neurosurgery, Río Hortega University Hospital,
       Valladolid, Spain
     # orcid: 'https://orcid.org/[TODO-ORCID]'
+  - given-names: Andrej
+    family-names: Steno
+    affiliation: >-
+      Department of Neurosurgery, Faculty of Medicine, Comenius University,
+      University Hospital Bratislava, Bratislava, Slovakia
+  - given-names: Bernadeta
+    family-names: Hrebenarova
+    affiliation: >-
+      Department of Neurosurgery, Faculty of Medicine, Comenius University,
+      University Hospital Bratislava, Bratislava, Slovakia
   - given-names: Ignacio
     family-names: Arrese
     affiliation: >-
@@ -58,6 +68,10 @@ preferred-citation:
       family-names: Esteban-Sinovas
     - given-names: Santiago
       family-names: Cepeda
+    - given-names: Andrej
+      family-names: Steno
+    - given-names: Bernadeta
+      family-names: Hrebenarova
     - given-names: Ignacio
       family-names: Arrese
     - given-names: Rosario
