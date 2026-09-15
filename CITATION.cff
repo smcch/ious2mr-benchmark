@@ -20,12 +20,12 @@ authors:
       Valladolid, Spain
     # orcid: 'https://orcid.org/[TODO-ORCID]'
   - given-names: Andrej
-    family-names: Steno
+    family-names: Šteňo
     affiliation: >-
       Department of Neurosurgery, Faculty of Medicine, Comenius University,
       University Hospital Bratislava, Bratislava, Slovakia
   - given-names: Bernadeta
-    family-names: Hrebenarova
+    family-names: Hrebeňárová
     affiliation: >-
       Department of Neurosurgery, Faculty of Medicine, Comenius University,
       University Hospital Bratislava, Bratislava, Slovakia
@@ -69,9 +69,9 @@ preferred-citation:
     - given-names: Santiago
       family-names: Cepeda
     - given-names: Andrej
-      family-names: Steno
+      family-names: Šteňo
     - given-names: Bernadeta
-      family-names: Hrebenarova
+      family-names: Hrebeňárová
     - given-names: Ignacio
       family-names: Arrese
     - given-names: Rosario
