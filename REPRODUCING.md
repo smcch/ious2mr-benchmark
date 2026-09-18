@@ -58,7 +58,9 @@ partition (61 training / 16 held-out subjects).
 ### 2.2 Fetch weights
 
 ```bash
-python scripts/fetch_weights.py --all      # ≈ 4.9 GB, see WEIGHTS.md
+python scripts/fetch_weights.py --download      # one 4.55 GiB archive, see WEIGHTS.md
+unrar x weights/2-zenodo-pesos.rar weights/     # or: 7z x ... -oweights/  |  bsdtar -xf ... -C weights/
+python scripts/fetch_weights.py --verify        # SHA-256 of every extracted file
 ```
 
 ### 2.3 Inference

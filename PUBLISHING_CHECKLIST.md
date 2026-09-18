@@ -32,7 +32,8 @@ weights archive go public. Ordered by what blocks publication.
       (author's decision, 2026-09-03); the manuscript no longer claims one.
 - [x] `[TODO — journal]` → `Medical Image Analysis` in `CITATION.cff`. ORCIDs and
       `date-released` still commented out there.
-- [ ] `[IRB-PENDING]` in the manuscript → the external centre's approval number.
+- [x] IRB → no. 13/2026, Ethics Committee of the University Hospital Bratislava, Academician
+      L. Dérer Hospital; in the manuscript and in `DATA.md`.
 - [ ] **Open the Zenodo files at submission.** Both records are published with *restricted*
       files, while the manuscript states that the weights and the segmentations are openly
       available. Set both to Open Access before the paper is sent out.
@@ -57,7 +58,8 @@ weights archive go public. Ordered by what blocks publication.
 - [ ] State on the Zenodo record that the `syndiff/` files are **non-commercial research use
       only** (NVIDIA Source Code License), and that everything else follows the repository
       licence.
-- [ ] Verify the download path end to end: `python scripts/fetch_weights.py --family resvit`.
+- [ ] Verify the download path end to end once the Zenodo files are open:
+      `fetch_weights.py --download`, extract, `fetch_weights.py --verify`.
 
 ## 🔁 Reproducibility gaps worth closing (not blocking)
 

@@ -13,7 +13,7 @@ The synthesis benchmark (see `paper_assets/METHODOLOGY.md`) measures **image qua
 
 Two independent nnU-Net v2 segmentation models, one per modality:
 
-| | Modelo A — **Seg-T2** | Modelo B — **Seg-FLAIR** |
+| | **Seg-T2** | **Seg-FLAIR** |
 |---|---|---|
 | Train input | 1 ch, real T2 | 1 ch, real FLAIR |
 | Train studies | 117 (61 subj, ReMIND) | 81 (54 subj) |
@@ -127,10 +127,15 @@ Statistical test:
 - Outputs `seg_wilcoxon_{T2,FLAIR}.csv`.
 
 Cross-modal table `seg_dual_T2_vs_FLAIR.csv`:
-- For each of the 24 dual-target methods, pair Dice-T2 (from its T2 channel, evaluated by Modelo A) with Dice-FLAIR (Modelo B) on the same 17 test studies.
-- Lets us ask: does sintetizar FLAIR además de T2 improve segmentation downstream, and which methods benefit most?
+- For each of the 24 dual-target methods, pair Dice-T2 (from its T2 channel, evaluated by Seg-T2) with Dice-FLAIR (evaluated by Seg-FLAIR) on the same 17 test studies.
+- Lets us ask: does synthesising FLAIR in addition to T2w improve downstream segmentation, and which methods benefit most?
 
 ## 4.1 Headline results (expanded cohort)
+
+> The per-class values in this section score every study (Dice = 0 where a class is predicted but
+> absent), which is the sensitivity-analysis rule of the paper. The paper's primary per-class values
+> aggregate only over the studies in which the class is present (real T2w: tumour 0.517, n = 22;
+> cavity 0.583, n = 16). The lesion endpoint is identical under both rules.
 
 Seg-T2 (n=29) | REAL Dice | Best synth Dice | Best synth |
 |---|---|---|---|
@@ -157,7 +162,7 @@ Best-synth lesion by phase:
 - FLAIR lesion preop: ResViT-2.5D-FLAIR 0.483 (84 % of REAL 0.575)
 - FLAIR lesion postop: ResViT-3D-FLAIR 0.231 (58 % of REAL 0.400)
 
-Takeaways: (1) **FLAIR sintético retiene más utilidad downstream que T2 sintético** en todas las vistas — tumor 83 % vs 71 %, lesion 73 % vs 61 %; (2) **cavidad es el cuello de botella** en ambas modalidades (~49 % retención) por ser la clase con ~0.5 % voxels; (3) la métrica **lesion** confirma que el modelo sí localiza el área enferma incluso cuando se equivoca en la sub-etiqueta — la brecha REAL-vs-synth es menor que en tumor o cavity por separado, evidenciando que parte de la pérdida en las métricas por-clase viene de confusión tumor↔cavity en el borde y no de fallo de detección; (4) **ResViT y SynDiff dominan top-5** (LPIPS-winners > SSIM-winners en utilidad downstream); (5) outlier: `GAN-cut-3D-FLAIR` colapsa a Dice 0.004 en cavity pero recupera Dice 0.190 en lesion postop.
+Takeaways: (1) **synthetic FLAIR retains more downstream utility than synthetic T2w** in every view — tumour 83 % vs 71 %, lesion 73 % vs 61 %; (2) **the resection cavity is the bottleneck** in both modalities (~49 % retention), being the class with ~0.5 % of the voxels; (3) the **lesion** metric confirms that the model does localise the diseased region even when it gets the sub-label wrong — the real-versus-synthetic gap is smaller than for tumour or cavity separately, so part of the per-class loss comes from tumour↔cavity confusion at their shared border rather than from missed detection; (4) **ResViT and SynDiff dominate the top five** (the LPIPS leaders outperform the SSIM leaders downstream); (5) outlier: `GAN-cut-3D-FLAIR` collapses to Dice 0.004 on the cavity but recovers Dice 0.190 on the post-resection lesion.
 
 ## 5. File map
 

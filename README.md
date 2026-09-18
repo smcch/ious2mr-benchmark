@@ -10,7 +10,7 @@ protocol.
 
 | | |
 |---|---|
-| **Paper** | *A Systematic Benchmark of Intraoperative Ultrasound-to-MR Synthesis for Brain Tumour Surgery* (under review) |
+| **Paper** | *A Systematic Benchmark of Intraoperative Ultrasound-to-MR Synthesis for Brain Tumour Surgery* — submitted to *Medical Image Analysis*; preprint of an earlier version: [arXiv:2606.00630](https://arxiv.org/abs/2606.00630) |
 | **Weights** | Zenodo [10.5281/zenodo.22213625](https://doi.org/10.5281/zenodo.22213625) — one 4.55 GiB archive · `python scripts/fetch_weights.py --download` then `--verify` |
 | **Data** | ReMIND (public, CC BY 4.0) — see [`DATA.md`](DATA.md) |
 | **Licence** | Apache-2.0, *except* the diffusion family — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) |
@@ -29,15 +29,16 @@ protocol.
 
 ### Headline findings
 
-* No architecture dominates every axis. The best downstream configuration
-  (**ResViT-2D + 3D-refine**) retains **61 %** of the real-T2w lesion Dice; **no GAN baseline
-  ranks in the top eight**.
-* **Higher global SSIM predicts *worse* downstream utility** (*r* = −0.82). Perceptual LPIPS
-  tracks utility equally strongly and is the only fidelity metric whose association survives
-  within-study adjustment.
-* The **resection cavity** is the failure mode of every model (best retention 41 %).
-* In an external three-patient pilot the ranking transfers (SSIM ρ = 0.82–0.88) and synthesis
-  behaves as a **domain normaliser** for MRI-trained downstream tools.
+* **MRI-trained tools can read the synthetic images without retraining, but not yet as well as
+  real MRI.** On the best synthetic T2w (**ResViT, 2D + 3D-refine**), the frozen nnU-Net trained
+  on real T2w retains **61 %** of its real-MRI lesion Dice (80 % on tumour), and the FLAIR model
+  retains 73 % on synthetic FLAIR; every configuration remains significantly below real MRI.
+* The **resection cavity** is the failure mode of every model (at most 41 % retention).
+* **Global SSIM misranks the generative paradigms.** The GAN baselines lead every global SSIM
+  ranking, yet none reaches the downstream top eight; pooled across experiments, higher global
+  SSIM goes with *worse* utility (*r* = −0.82), a between-paradigm contrast that reverses within
+  families. Measured over the lesion and a 5 mm margin, SSIM becomes a positive predictor.
+* In an external three-patient pilot the fidelity ranking transfers (SSIM ρ = 0.82–0.88).
 
 ---
 
@@ -69,7 +70,9 @@ export IOUS2MR_ROOT=/path/to/working/tree     # where the pipeline reads/writes
 export IOUS2MR_DATA=/path/to/preprocessed     # ReMIND-derived volumes
 export IOUS2MR_CKPT=/path/to/weights
 
-python scripts/fetch_weights.py --family resvit     # ~1.2 GB
+python scripts/fetch_weights.py --download          # one 4.55 GiB archive
+unrar x weights/2-zenodo-pesos.rar weights/         # or 7z / bsdtar, see WEIGHTS.md
+python scripts/fetch_weights.py --verify            # SHA-256 of every extracted file
 ```
 
 **Reproduce every table and figure without a GPU** — the released CSVs are enough:

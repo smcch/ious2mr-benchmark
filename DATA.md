@@ -56,22 +56,19 @@ re-downloading ReMIND. See `WEIGHTS.md` for the release location.
 ## 2. External validation cohort (private — not shareable)
 
 The paper's external pilot uses navigated intraoperative ultrasound sweeps and preoperative MR
-examinations from three patients operated at a second institution. **These data are not
-publicly available and are not included in this release.** They were used under the terms of
-the participating centre's institutional review board approval (see the paper's Methods),
-which does not permit redistribution of the imaging data or of patient-level metadata.
+examinations from three patients operated at an external institution (University Hospital
+Bratislava, Slovakia). **These data are not publicly available and are not included in this
+release.** Their retrospective use was approved by the Ethics Committee of the University
+Hospital Bratislava, Academician L. Dérer Hospital (approval no. 13/2026), and all patients gave
+written informed consent; the approval does not permit redistribution of the images, of
+patient-level metadata or of analysis artefacts that could be traced to an individual sweep.
 
-What *is* provided for that analysis:
-
-* the **code** that runs the external pilot (input preparation, frozen-model inference,
-  cone-masked scoring, label propagation, downstream staging and metric computation), written
-  so that it can be pointed at any similarly organised external cohort;
-* the **aggregate derived metrics** with anonymous per-sweep labels (`BRA-N`), containing no
-  images and no patient-identifying information.
-
-Researchers wishing to reproduce the external analysis must supply their own cohort of
-navigated pre-resection ioUS sweeps with paired preoperative T2w/FLAIR, organised as described
-in `docs/external_pilot.md`.
+What *is* provided for that analysis is its complete protocol, in `docs/external_pilot.md` (data
+organisation, frozen-model inference, cone-masked scoring, label propagation and downstream
+evaluation), so that it can be repeated on any comparable cohort of navigated pre-resection
+ioUS sweeps with paired preoperative T2w/FLAIR, together with the script that draws the
+external-pilot figure from such an analysis (`src/figures/make_fig_external.py`). Neither the
+data nor any per-sweep result is distributed.
 
 ---
 
