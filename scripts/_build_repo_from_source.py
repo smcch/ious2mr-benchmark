@@ -88,7 +88,6 @@ MANIFEST: list[tuple[str, str]] = [
     ("evaluacion-final/rescore_all.py",              "src/scoring/rescore_all.py"),
     ("evaluacion-final/rescore_roi.py",              "src/scoring/rescore_roi.py"),
     ("evaluacion-final/build_paper_tables.py",       "src/scoring/build_paper_tables.py"),
-    ("evaluacion-final/RESCORE_README.md",           "docs/scoring_protocol.md"),
     ("evaluacion-final/ROI_METHODOLOGY.md",          "docs/roi_methodology.md"),
     ("paper_assets/METHODOLOGY.md",                  "docs/methodology_training.md"),
 

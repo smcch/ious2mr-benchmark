@@ -29,7 +29,7 @@ GAN_TARGETS = ["t2", "t2_flair"]
 RESVIT_REGIMES = ["2d", "2.5d", "2d_3d_refine", "full_3d"]
 
 # SynDiff: experiment -> (directory holding the diffusive generator, chosen epoch),
-# per docs/scoring_protocol.md (RESCORE_README).
+# (the evaluated checkpoints, also listed in configs/weights_manifest.json).
 # The "3drefine" experiments are a frozen 2D diffusion Stage-1 (taken from the parent
 # experiment at the stated epoch) plus a 3D ResNet refiner trained on top, so their
 # generator lives in the parent directory and only refiner_20.pth is theirs.

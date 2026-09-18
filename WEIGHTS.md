@@ -35,8 +35,8 @@ DOI landing page for a manual download.
 | **Total** | **66** | **4.55 GiB** | |
 
 Intermediate training checkpoints are **not** released: the SynDiff tree alone holds ~17 GB of
-per-epoch snapshots, of which only the selected epochs (documented in
-[`docs/scoring_protocol.md`](docs/scoring_protocol.md)) are needed to reproduce the paper.
+per-epoch snapshots, of which only the checkpoints listed in
+[`configs/weights_manifest.json`](configs/weights_manifest.json) are needed to reproduce the paper.
 
 ## Archive layout
 

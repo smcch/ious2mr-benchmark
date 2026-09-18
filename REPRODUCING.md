@@ -83,7 +83,8 @@ python src/scoring/rescore_roi.py     # ROI-restricted (lesion/tumour/cavity × 
 python src/scoring/build_paper_tables.py
 ```
 
-The metric definitions are frozen in [`docs/scoring_protocol.md`](docs/scoring_protocol.md) and
+The metric definitions are those of the paper (Section 2.6), as implemented in
+`src/scoring/rescore_all.py`; the ROI-restricted variant is described in
 [`docs/roi_methodology.md`](docs/roi_methodology.md).
 
 ### 2.5 Downstream segmentation
@@ -127,7 +128,7 @@ python src/syndiff/eval_all_epochs.py     # after training, to pick the evaluate
 
 **Checkpoint selection.** ResViT uses the best phase-2 validation checkpoint on an internal
 15 % validation split. For SynDiff the paper's evaluated epoch was chosen by scoring saved
-epochs — the selected epochs are documented in `docs/scoring_protocol.md`; if you re-train,
+epochs — the evaluated checkpoints are listed in `configs/weights_manifest.json`; if you re-train,
 select on a validation split rather than on the test set.
 
 ---
